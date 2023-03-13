@@ -4,6 +4,8 @@
 
 - [ ] Dar zamane login e user, age login be dorosti anjam shod, ax profile user be hamrahe yek stroke mesle instagram, az poshte safhe login be bala animate beshe va hamin ro bargarde
 
+- [ ] On first meet password section, use bcrypt on User model for encrypt and validate this password
+
 - [ ] Panel admin
     [ ] Didane panel tamami karKonan va vaziate faaliateshoon (Hazer ya qayeb)
     [ ] Yek menu baraye manage kardane karbaran
