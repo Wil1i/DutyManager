@@ -21,9 +21,4 @@ const loginController = require("../controllers/loginController.js")
 Router.get("/", loginController.get)
 Router.get("/", loginController.post)
 
-const errController = require("../controllers/error")
-const { compareSync } = require("bcrypt")
-Router.get("/*", errController)
-
-
 module.exports = Router

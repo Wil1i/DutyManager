@@ -30,6 +30,10 @@ const user = db.define('user', {
 
     profile : {
         type : DataTypes.STRING
+    },
+
+    userRank : {
+        type :  DataTypes.STRING
     }
 
 }, {
