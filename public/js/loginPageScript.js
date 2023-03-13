@@ -33,16 +33,26 @@ loginButton.addEventListener("click", async () => {
     if(loginRequest.data == ""){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
     }else{
-        document.documentElement.style.setProperty('--main-color', 'green');
         showAlert(headerText, "با موفقیت وارد شدید", "اپل سرویس", "green", "black")
-        setTimeout(() => {
-            document.documentElement.style.setProperty('--main-color', '#2f25e8');
-        }, 10000);
     }
 })
 
 logoutButton.addEventListener("click", async () => {
+    const logoutRequest = await axios.post("/?action=logout", {
+        codePersoneli : codePersoneli.value
+    })
 
+    if(logoutRequest.data == ""){
+        showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
+    }else{
+        console.log(logoutRequest.data)
+        if(logoutRequest.data.includes("not duty")){
+            showAlert(headerText, "شما وارد نشده اید", "اپل سرویس", "red", "black")
+        }else if(logoutRequest.data.includes("done")){
+            showAlert(headerText, "با موفقیت خارج شدید", "اپل سرویس", "red", "black")
+        }
+        
+    }
 })
 
 passwordSubmitButton.addEventListener("click", async () => {
