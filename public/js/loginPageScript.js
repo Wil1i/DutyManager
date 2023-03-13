@@ -35,6 +35,9 @@ loginButton.addEventListener("click", async () => {
     }else{
         document.documentElement.style.setProperty('--main-color', 'green');
         showAlert(headerText, "با موفقیت وارد شدید", "اپل سرویس", "green", "black")
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--main-color', '#2f25e8');
+        }, 10000);
     }
 })
 
