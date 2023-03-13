@@ -19,6 +19,10 @@ const DutyInformation = db.define('dutyInformation', {
 
     endTime : {
         type : DataTypes.TEXT
+    },
+
+    date : {
+        type : DataTypes.TEXT
     }
 
 }, {

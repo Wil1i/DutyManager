@@ -15,6 +15,10 @@ const Duty = db.define('duty', {
 
     startTime : {
         type : DataTypes.TEXT
+    },
+
+    infoID : {
+        type : DataTypes.NUMBER
     }
 
 }, {

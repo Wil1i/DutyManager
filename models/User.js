@@ -2,8 +2,6 @@ const { DataTypes } = require('sequelize');
 const bcrypt = require("bcrypt")
 const db = require("../configs/db")
 
-"CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(128), password VARCHAR(128), email TEXT, firstName TEXT, lastName TEXT, number VARCHAR(128), userRank VARCHAR(64))"
-
 const user = db.define('user', {
 
     id : {
@@ -37,6 +35,10 @@ const user = db.define('user', {
     },
 
     dutyHours : {
+        type : DataTypes.NUMBER
+    },
+
+    dutyMinutes : {
         type : DataTypes.NUMBER
     }
 
