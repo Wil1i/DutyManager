@@ -40,6 +40,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazirmatn-RD-Regular.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
 *{
   font-family: 'vazir';
   font-weight: bold;
