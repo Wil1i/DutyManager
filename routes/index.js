@@ -19,6 +19,6 @@ const upload = multer({ storage })
 
 const loginController = require("../controllers/loginController.js")
 Router.get("/", loginController.get)
-Router.get("/", loginController.post)
+Router.post("/", loginController.post)
 
 module.exports = Router

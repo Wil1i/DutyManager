@@ -1,6 +1,7 @@
 {
     "app": {
-      "port": 80
+      "port": 80,
+      "secret" : "appleServiceSecretCode"
     },
     "database": {
       "host": "localhost",

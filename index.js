@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash())
 app.use(cookieParser())
-app.use(session({ secret: config.secret }))
+app.use(session({ secret: config.app.secret }))
 app.set("views", __dirname + "/views");
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");

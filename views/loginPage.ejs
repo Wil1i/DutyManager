@@ -14,13 +14,13 @@
 
         <h1 id="loginH">ورود</h1>
         <p id="nameP">اپل سرویس</p>
-        <form class="centerHandler">
+        <div class="centerHandler" id="loginForm">
           <input id="codePersoneli" type="number" name="code" autocomplete="off" autofocus required placeholder="...کد پرسنلی خود  را وارد کنید">
           <div class="btnHandler">
             <button type="submit" name="login" id="loginButton">ورود</button>
             <button type="submit" name="logout" id="logoutButton">خروج</button>
           </div>
-        </form>
+        </div>
 
       </div>
 
@@ -28,6 +28,24 @@
     </div>
 
     <p id="customText">عید نوروز مبارک</p>
+
+    <script src="/js/axios.min.js"></script>
+
+    <script>
+      const loginButton = document.getElementById("loginButton")
+      const logoutButton = document.getElementById("logoutButton")
+      const codePersoneli = document.getElementById("codePersoneli")
+
+      loginButton.addEventListener("click", async () => {
+        await axios.post("/?action=login", {
+          codePersoneli : codePersoneli.value
+        })
+      })
+
+      logoutButton.addEventListener("click", async () => {
+
+      })
+    </script>
 
   </body>
 </html>

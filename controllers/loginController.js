@@ -12,7 +12,7 @@ const get = (req, res) => {
 const post = async (req, res) => {
     const targetUser = await User.findOne({
         where : {
-            codePersoneli : req.body.code
+            codePersoneli : req.body.codePersoneli
         }
     })
 

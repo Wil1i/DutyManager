@@ -1,6 +1,7 @@
 {
     "app": {
-      "port": 80
+      "port": 80,
+      "secret" : "SECRET CODE HERE"
     },
     "database": {
       "host": "HOST",
