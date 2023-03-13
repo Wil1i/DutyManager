@@ -16,7 +16,7 @@ const post = async (req, res) => {
         }
     })
 
-    res.json(targetUser || undefined)
+    res.send(targetUser || undefined)
 }
 
 module.exports = {

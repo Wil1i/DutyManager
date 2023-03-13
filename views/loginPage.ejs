@@ -35,11 +35,30 @@
       const loginButton = document.getElementById("loginButton")
       const logoutButton = document.getElementById("logoutButton")
       const codePersoneli = document.getElementById("codePersoneli")
+      const headerText = document.getElementById("nameP")
 
       loginButton.addEventListener("click", async () => {
-        await axios.post("/?action=login", {
+        const loginRequest = await axios.post("/?action=login", {
           codePersoneli : codePersoneli.value
         })
+
+        if(loginRequest.data == ""){
+          headerText.style.opacity = 0.2
+          setTimeout(() => {
+            headerText.innerHTML = "کد پرسنلی نامعتبر"
+            headerText.style.color = "red"
+            headerText.style.opacity = 1
+          }, 200);
+
+          setTimeout(() => {
+            headerText.style.opacity = 0.2
+            setTimeout(() => {
+              headerText.innerHTML = "اپل سرویس"
+              headerText.style.color = "black"
+              headerText.style.opacity = 1
+            }, 200);
+          }, 10000);
+        }
       })
 
       logoutButton.addEventListener("click", async () => {
