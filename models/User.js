@@ -34,6 +34,10 @@ const user = db.define('user', {
 
     userRank : {
         type :  DataTypes.STRING
+    },
+
+    dutyHours : {
+        type : DataTypes.NUMBER
     }
 
 }, {
