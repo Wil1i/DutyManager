@@ -7,27 +7,34 @@ const passwordInput = document.getElementById("firstTimePassword")
 const passwordAlert = document.getElementById("passwordAlert")
 const locker = [document.getElementById("passwordBoxHandler"), document.getElementById("passwordContainer")]
 
+function showAlert(object, text, defaultText, color, defaultColor){
+    object.style.opacity = 0.2
+    setTimeout(() => {
+    object.innerHTML = text
+    object.style.color = color
+    object.style.opacity = 1
+    }, 200);
+
+    setTimeout(() => {
+    object.style.opacity = 0.2
+    setTimeout(() => {
+        object.innerHTML = defaultText
+        object.style.color = defaultColor
+        object.style.opacity = 1
+    }, 200);
+    }, 10000);
+}
+
 loginButton.addEventListener("click", async () => {
     const loginRequest = await axios.post("/?action=login", {
         codePersoneli : codePersoneli.value
     })
 
     if(loginRequest.data == ""){
-        headerText.style.opacity = 0.2
-        setTimeout(() => {
-        headerText.innerHTML = "کد پرسنلی نامعتبر"
-        headerText.style.color = "red"
-        headerText.style.opacity = 1
-        }, 200);
-
-        setTimeout(() => {
-        headerText.style.opacity = 0.2
-        setTimeout(() => {
-            headerText.innerHTML = "اپل سرویس"
-            headerText.style.color = "black"
-            headerText.style.opacity = 1
-        }, 200);
-        }, 10000);
+        showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
+    }else{
+        document.documentElement.style.setProperty('--main-color', 'green');
+        showAlert(headerText, "با موفقیت وارد شدید", "اپل سرویس", "green", "black")
     }
 })
 
@@ -50,21 +57,7 @@ passwordSubmitButton.addEventListener("click", async () => {
             codePersoneli.focus()
         }, 300);
     }else{
-        passwordAlert.style.opacity = 0.2
-        setTimeout(() => {
-        passwordAlert.innerHTML = "رمز نامعتبر"
-        passwordAlert.style.color = "red"
-        passwordAlert.style.opacity = 1
-        }, 200);
-
-        setTimeout(() => {
-        passwordAlert.style.opacity = 0.2
-        setTimeout(() => {
-            passwordAlert.innerHTML = "خوش آمدید!"
-            passwordAlert.style.color = "black"
-            passwordAlert.style.opacity = 1
-        }, 200);
-        }, 10000);
+        showAlert(passwordAlert, "رمز نامعتبر", "خوش آمدید!", "red", "black")
     }
 })
 
