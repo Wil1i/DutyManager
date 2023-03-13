@@ -2,11 +2,7 @@
 - [ ] Baraye rah andaziye avalie password administrator bekhahad
 - [ ] DataBase asli bar rooye system administrator bashad va be soorate localhost be tablet hazer dar mahal motasel shavad
 
-- [ ] Har karbar bad az zadane hozooriye khod betavanad etelaati az khod ra tamasha konad
-    [ ] Ezafe kardane dokme baraye bastane menu information (Easy to use)
-    [ ] Namayesh dadane saate kari dar mah
-    [ ] Namayesh dadane miyangine saate kari dar rooz
-    [ ] Namayesh dadane profile karbar va yek stroke manande close friend instagram doresh biad vaghti ke ba movafaghiat login mishe. va ziresh matne morede nazar neveshte beshe "ba movafaghiat login shodid"
+- [ ] Dar zamane login e user, age login be dorosti anjam shod, ax profile user be hamrahe yek stroke mesle instagram, az poshte safhe login be bala animate beshe va hamin ro bargarde
 
 - [ ] Panel admin
     [ ] Didane panel tamami karKonan va vaziate faaliateshoon (Hazer ya qayeb)
