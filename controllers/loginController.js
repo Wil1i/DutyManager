@@ -50,7 +50,10 @@ const post = async (req, res) => {
             })
 
             let dutyHours = onDutyTime[0] - offDutyTime[0]
-            let dutyMinutes = onDutyTime[1] + offDutyTime[1]
+            let dutyMinutes = onDutyTime[1] - offDutyTime[1]
+            
+            if(onDutyTime[1] < offDutyTime[1])
+                dutyMinutes = offDutyTime[1] - onDutyTime[1]
 
             while(true){
                 if(dutyMinutes >= 60){
@@ -58,6 +61,8 @@ const post = async (req, res) => {
                     dutyMinutes -= 60
                 }else break
             }
+
+            console.log(`${dutyHours} : ${dutyMinutes}`)
 
             const workerInformation = await User.findOne({
                 where : {

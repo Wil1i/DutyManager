@@ -32,8 +32,10 @@ loginButton.addEventListener("click", async () => {
 
     if(loginRequest.data == ""){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
+        codePersoneli.value = ""
     }else{
         showAlert(headerText, "با موفقیت وارد شدید", "اپل سرویس", "green", "black")
+        codePersoneli.value = ""
     }
 })
 
@@ -44,12 +46,14 @@ logoutButton.addEventListener("click", async () => {
 
     if(logoutRequest.data == ""){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
+        codePersoneli.value = ""
     }else{
-        console.log(logoutRequest.data)
         if(logoutRequest.data.includes("not duty")){
             showAlert(headerText, "شما وارد نشده اید", "اپل سرویس", "red", "black")
+            codePersoneli.value = ""
         }else if(logoutRequest.data.includes("done")){
             showAlert(headerText, "با موفقیت خارج شدید", "اپل سرویس", "red", "black")
+            codePersoneli.value = ""
         }
         
     }
