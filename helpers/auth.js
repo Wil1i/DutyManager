@@ -2,7 +2,7 @@ const isLoggedIn = (req, res, next) => {
     if(!req.user){
         req.flash("warning", "شما باید وارد حساب کاربری خود شوید")
         req.session.redirectTo = req.url;
-        res.redirect("/admin")
+        res.redirect("/admin/login")
         return;
     }
 
@@ -11,7 +11,7 @@ const isLoggedIn = (req, res, next) => {
 
 const isNotLoggedIn = (req, res, next) => {
     if(req.user){
-        res.redirect("/")
+        res.redirect("/admin")
         return;
     }
 
@@ -19,7 +19,7 @@ const isNotLoggedIn = (req, res, next) => {
 }
 
 const isUserAdmin = (req, res, next) => {
-    if(req.user.userRank !== "admin") return res.redirect("/");
+    if(req.user.userRank != "مدیر") return res.redirect("/admin/login");
     next()
 }
 
