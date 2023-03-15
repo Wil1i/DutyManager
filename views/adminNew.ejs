@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن کاربر - اپل سرویس</title>
+    <link rel="stylesheet" href="/css/adminNew.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+</head>
+<body>
+    
+    <div id="mainContainer">
+        <h1>افزودن کاربر</h1>
+
+        <form id="inputBox" action="/admin/new" method="post">
+            <div class="inputBoxHandler">
+
+                <div class="column">
+                    <input type="text" name="lastname" placeholder="نام خانوادگی" class="size5">
+                    <input type="text" name="firstname" placeholder="نام" class="size5">
+                </div>
+
+                <div class="column">
+                    <input type="text" name="rank" class="size3" placeholder="مقام">
+                    <input type="text" name="year" class="size1 c" placeholder="سال">
+                    <input type="text" name="month" class="size1 c" placeholder="ماه">
+                    <input type="text" name="day" class="size1 c" placeholder="روز">
+                </div>
+                <div class="column">
+                    <input type="file" name="file" name="" id="" class="size10">
+                </div>
+
+            </div>
+
+            <button type="submit">افزودن</button>
+        </form>
+    </div>
+
+</body>
+</html>
