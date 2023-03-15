@@ -4,15 +4,21 @@
 
 - [ ] Add kardane tag haye flash be safhe haye morede niaz baraye namayesh dadane alert ha
 
+- [ ] Check workers activity using API every 10 secs using ajax
+
+- [ ] When double clicked on activity circle, set activity to other one using API ajax
+
+- [ ] on create user section, fix image uploader
+
 - [x] Dar zamane login e user, age login be dorosti anjam shod, ax profile user be hamrahe yek stroke mesle instagram, az poshte safhe login be bala animate beshe va hamin ro bargarde
 
 - [ ] On first meet password section, use bcrypt on User model for encrypt and validate this password
 
 - [ ] Panel admin
-    [ ] Didane panel tamami karKonan va vaziate faaliateshoon (Hazer ya qayeb)
+    [x] Didane panel tamami karKonan va vaziate faaliateshoon (Hazer ya qayeb)
     [ ] Yek menu baraye manage kardane karbaran
-    [ ] Yek menu baraye add kardane karbaran
-    [ ] Table baraye didane saate kar e karbaran
+    [x] Yek menu baraye add kardane karbaran
+    [x] Table baraye didane saate kar e karbaran
       [ ] Be tartib bashe az saate karie ziad be kam
         [ ] Qabeliat taqir filter be az kam be ziad
       [ ] Search menu dashte bashe
