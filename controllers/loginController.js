@@ -19,22 +19,35 @@ const post = async (req, res) => {
                 codePersoneli : req.body.codePersoneli
             }
         })
+        if(targetUser){
 
-        const persianTime = new Pdate()
-        await DutyInformation.create({
-            codePersoneli : req.body.codePersoneli,
-            startTime : `${persianTime.hours()} : ${persianTime.minutes()}`,
-            date : `${persianTime.year()}/${persianTime.month()}/${persianTime.day()}`
-        }).then(async (diResult) => {
-            await Duty.create({
-                codePersoneli : req.body.codePersoneli,
-                startTime : `${persianTime.hours()}:${persianTime.minutes()}`,
-                infoID : diResult.id
-            })
-        })
+            const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
+            if(!isUserDuty){
 
-        res.send(targetUser || undefined)
+                const persianTime = new Pdate()
+                await DutyInformation.create({
+                    codePersoneli : req.body.codePersoneli,
+                    startTime : `${persianTime.hours()} : ${persianTime.minutes()}`,
+                    date : `${persianTime.year()}/${persianTime.month()}/${persianTime.day()}`
+                }).then(async (diResult) => {
+                    await Duty.create({
+                        codePersoneli : req.body.codePersoneli,
+                        startTime : `${persianTime.hours()}:${persianTime.minutes()}`,
+                        infoID : diResult.id
+                    })
+                })
+                const data = {...targetUser, isDuty : false}
+                res.send(data)
+            }else{
+                const data = {...targetUser, isDuty : true}
+                res.send(data)
+            }
+            
+        }else{
+            res.send(undefined)
+        }
 
+        
     }else if(req.query.action == "logout"){
 
         const todayDuty = await Duty.findOne({

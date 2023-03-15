@@ -29,12 +29,15 @@ loginButton.addEventListener("click", async () => {
     const loginRequest = await axios.post("/?action=login", {
         codePersoneli : codePersoneli.value
     })
-
-    if(loginRequest.data == ""){
+    console.log(loginRequest.data)
+    if(loginRequest.data == undefined){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
         codePersoneli.value = ""
+    }else if(loginRequest.data.isDuty == true){
+        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، شما وارد شده اید.`, "اپل سرویس", "red", "black")
+        codePersoneli.value = ""
     }else{
-        showAlert(headerText, "با موفقیت وارد شدید", "اپل سرویس", "green", "black")
+        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black")
         codePersoneli.value = ""
     }
 })
