@@ -26,6 +26,9 @@ const routes = require("./routes");
 const user = require("./models/User");
 app.use("/", routes)
 
+const adminRoutes = require("./routes/admin")
+app.use("/admin", adminRoutes)
+
 app.listen(config.app.port, () => {
   console.log(`Server is running on ${config.app.port}`);
 });

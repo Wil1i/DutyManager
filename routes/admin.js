@@ -17,12 +17,12 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
-const loginController = require("../controllers/loginController.js")
-Router.get("/", loginController.get)
-Router.post("/", loginController.post)
-
 const adminController = require("../controllers/adminController.js")
-Router.get("/admin", adminController.get)
-Router.post("/admin", adminController.post)
+Router.get("/", adminController.get)
+Router.post("/", adminController.post)
+
+const adminLoginController = require("../controllers/adminLoginController")
+Router.get("/login", isNotLoggedIn,adminLoginController.get)
+Router.post("/login", isNotLoggedIn,adminLoginController.post, adminLoginController.loginSuccess)
 
 module.exports = Router

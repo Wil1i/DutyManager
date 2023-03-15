@@ -9,7 +9,7 @@ passport.use(new localStrategy(
 
     const user = await User.findOne({
       where : {
-        username : username
+        codePersoneli : username
       }
     })
 
@@ -19,8 +19,12 @@ passport.use(new localStrategy(
         return done(null, false, { message : "نام کاربری و یا کلمه عبور اشتباه است" })
       }
 
-      if(!User.validPassword(user, password)){
+      if(password !== "admin"){
         return done(null, false, { message : "نام کاربری و یا کلمه عبور اشتباه است" })
+      }
+
+      if(user.userRank !== "admin"){
+        return done(null, false, {message : "شما دسترسی به این بخش از سایت را ندارید"})
       }
 
       return done(null, user)
