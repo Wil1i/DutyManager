@@ -22,8 +22,8 @@ passport.use(new localStrategy(
       if(password !== "admin"){
         return done(null, false, { message : "نام کاربری و یا کلمه عبور اشتباه است" })
       }
-
-      if(user.userRank !== "admin"){
+      
+      if(user.userRank != "مدیر"){
         return done(null, false, {message : "شما دسترسی به این بخش از سایت را ندارید"})
       }
 
