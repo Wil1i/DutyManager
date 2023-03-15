@@ -1,6 +1,7 @@
 :root{
     --main-color: #2f25e8;
     --danger: #e3090f;
+    --success : rgb(78, 209, 78);
 }
 
 *{
@@ -105,4 +106,12 @@ li{
 
 .hover:hover{
     background-color: #f1f1f1;
+}
+
+.offline{
+    background-color: var(--danger);
+}
+
+.online{
+    background-color: var(--success);
 }
