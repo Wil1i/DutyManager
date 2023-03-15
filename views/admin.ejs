@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریتی - اپل سرویس</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+</head>
+<body>
+    
+    <a href="/admin/new" id="addUser">+</a>
+
+    <div id="container">
+        <div id="containerBox">
+            <li class="userContainer mainContainer">
+                <p class="imageHandler"></p>
+
+                <p>نام و نام خانوادگی</p>
+
+                <p>کد پرسنلی</p>
+
+                <p>مقام</p>
+
+                <p>ساعت کاری</p>
+                
+                <p>تاریخ تولد</p>
+            </li>
+
+            <ul>
+                
+
+                <% users.forEach((u) => { %>
+                    <li class="userContainer">
+                        <p class="imageHandler">
+                            <img src="/uploads/<%= (u.profile && u.profile !== "") ? u.profile : "profile.png" %>">
+                        </p>
+
+                        <p class="userName"><%= u.firstName %> <%= u.lastName %></p>
+
+                        <p><%= u.codePersoneli %></p>
+
+                        <p><%= (u.userRank) ? u.userRank : "تایین نشده" %></p>
+
+                        <p><%= u.dutyHours %> : <%= u.dutyMinutes %></p>
+                        
+                        <p><%= u.birthday %></p>
+                    </li>
+                <% }) %>
+                
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
