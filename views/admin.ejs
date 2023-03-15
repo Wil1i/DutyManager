@@ -32,7 +32,7 @@
                 
 
                 <% users.forEach((u) => { %>
-                    <li class="userContainer">
+                    <li class="userContainer hover" id="<%=u.codePersoneli%>">
                         <p class="imageHandler">
                             <img src="/uploads/<%= (u.profile && u.profile !== "") ? u.profile : "profile.png" %>">
                         </p>
@@ -52,6 +52,18 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        var userContainers = document.querySelectorAll(".userContainer")
+
+        for(let i = 0; i < userContainers.length; i++){
+            if(userContainers[i].id){
+                userContainers[i].addEventListener("click", () => {
+                    window.location.href = window.location.href + "/" + userContainers[i].id
+                })
+            }
+        }
+    </script>
 
 </body>
 </html>
