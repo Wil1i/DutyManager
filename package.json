@@ -24,6 +24,7 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "persian-date": "^1.1.0",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.29.3",
+    "sharp": "^0.31.3"
   }
 }
