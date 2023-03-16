@@ -118,7 +118,6 @@ body{
   left: 5px;
   color: red;
   transform: rotateZ(25deg);
-  display: none;
 }
 
 .btnHandler{
