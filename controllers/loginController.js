@@ -1,4 +1,5 @@
 const User = require("../models/User")
+const Setting = require("../models/Setting")
 const Duty = require("../models/Duty")
 const DutyInformation = require("../models/DutyInformation")
 const Pdate = require("persian-date")
@@ -104,7 +105,9 @@ const post = async (req, res) => {
         return res.send("done")
 
     }else if(req.query.action == "password"){
-        (req.body.password == "appleservice") ? res.send("ok") : res.send("no")
+        await Setting.findOne({where : {name : "password"}}).then((result) => {
+            (req.body.password = result.value) ? res.send("ok") : res.send("no")
+        })
     }
 }
 
