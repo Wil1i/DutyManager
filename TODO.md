@@ -4,9 +4,7 @@
 
 - [ ] Add kardane tag haye flash be safhe haye morede niaz baraye namayesh dadane alert ha
 
-- [ ] Check workers activity using API every 10 secs using ajax
-
-- [ ] When double clicked on activity circle, set activity to other one using API ajax
+- [x] Check workers activity using API every 10 secs using ajax
 
 - [ ] on create user section, fix image uploader
 
