@@ -3,6 +3,8 @@ const DutyInformation = require("../models/DutyInformation")
 const User = require("../models/User")
 
 const get = async (req, res) => {
+    if(!req.user) return res.redirect("/admin/login")
+
     const users = await User.findAll({order : [['dutyHours', 'DESC'], ['dutyMinutes', 'DESC']]})
     const duties = await Duty.findAll()
     let dutyList = []
