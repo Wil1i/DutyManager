@@ -26,10 +26,21 @@ const post = async (req, res) => {
             if(!isUserDuty){
 
                 const persianTime = new Pdate()
+
+                let pHours = persianTime.hours()
+                let pMinutes = persianTime.minutes()
+                let pMonth = persianTime.month()
+                let pDay = persianTime.day();
+
+                (pHours < 10) ? pHours = "0" + pHours : false;
+                (pMinutes < 10) ? pMinutes = "0" + pMinutes : false;
+                (pMonth < 10) ? pMonth = "0" + pMonth : false;
+                (pDay < 10) ? pDay = "0" + pDay : false;
+
                 await DutyInformation.create({
                     codePersoneli : req.body.codePersoneli,
-                    startTime : `${persianTime.hours()} : ${persianTime.minutes()}`,
-                    date : `${persianTime.year()}/${persianTime.month()}/${persianTime.day()}`
+                    startTime : `${pHours} : ${pMinutes}`,
+                    date : `${persianTime.year()}/${pMonth}/${pDay}`
                 }).then(async (diResult) => {
                     await Duty.create({
                         codePersoneli : req.body.codePersoneli,
@@ -76,8 +87,6 @@ const post = async (req, res) => {
                 }else break
             }
 
-            console.log(`${dutyHours} : ${dutyMinutes}`)
-
             const workerInformation = await User.findOne({
                 where : {
                     codePersoneli : req.body.codePersoneli
@@ -96,7 +105,14 @@ const post = async (req, res) => {
             await workerInformation.update({dutyMinutes : updatedMinutes})
             await workerInformation.update({dutyHours : updatedHours})
 
-            const dutyInformationToday = await DutyInformation.findByPk(todayDuty.infoID)
+            const dutyInformationToday = await DutyInformation.findByPk(todayDuty.infoID);
+
+            (offDutyTime[0] < 10) ? offDutyTime[0] = "0"+offDutyTime[0] : offDutyTime[0];
+            (offDutyTime[1] < 10) ? offDutyTime[1] = "0"+offDutyTime[1] : offDutyTime[1];
+
+            (onDutyTime[0] < 10) ? onDutyTime[0] = "0"+onDutyTime[0] : onDutyTime[0];
+            (onDutyTime[1] < 10) ? onDutyTime[1] = "0"+onDutyTime[1] : onDutyTime[1];
+
             dutyInformationToday.update({endTime : `${offDutyTime[0]} : ${offDutyTime[1]}`})
 
             await todayDuty.destroy()
