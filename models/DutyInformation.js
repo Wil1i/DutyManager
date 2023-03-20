@@ -23,6 +23,10 @@ const DutyInformation = db.define('dutyInformation', {
 
     date : {
         type : DataTypes.TEXT
+    },
+
+    time : {
+        type : DataTypes.NUMBER
     }
 
 }, {
