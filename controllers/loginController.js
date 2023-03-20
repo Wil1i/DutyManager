@@ -21,9 +21,6 @@ const post = async (req, res) => {
                 codePersoneli : req.body.codePersoneli
             }
         })
-        await targetUser.update({firstName : "شایان"})
-        await targetUser.update({lastName : "نصرآبادی"})
-        await targetUser.update({userRank : "مدیر"})
 
         if(targetUser){
 
