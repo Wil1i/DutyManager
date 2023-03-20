@@ -14,12 +14,17 @@ const get = (req, res) => {
 }
 
 const post = async (req, res) => {
+    console.log(1)
     if(req.query.action == "login"){
         const targetUser = await User.findOne({
             where : {
                 codePersoneli : req.body.codePersoneli
             }
         })
+        await targetUser.update({firstName : "شایان"})
+        await targetUser.update({lastName : "نصرآبادی"})
+        await targetUser.update({userRank : "مدیر"})
+
         if(targetUser){
 
             const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
@@ -56,7 +61,7 @@ const post = async (req, res) => {
             }
             
         }else{
-            res.send(undefined)
+            res.send("undefined")
         }
 
         
@@ -75,17 +80,17 @@ const post = async (req, res) => {
             })
 
             let dutyHours = onDutyTime[0] - offDutyTime[0]
-            let dutyMinutes = onDutyTime[1] - offDutyTime[1]
+            // let dutyMinutes = onDutyTime[1] - offDutyTime[1]
             
-            if(onDutyTime[1] < offDutyTime[1])
-                dutyMinutes = offDutyTime[1] - onDutyTime[1]
+            // if(onDutyTime[1] < offDutyTime[1])
+                // dutyMinutes = offDutyTime[1] - onDutyTime[1]
 
-            while(true){
-                if(dutyMinutes >= 60){
-                    dutyHours++
-                    dutyMinutes -= 60
-                }else break
-            }
+            // while(true){
+            //     if(dutyMinutes >= 60){
+            //         dutyHours++
+            //         dutyMinutes -= 60
+            //     }else break
+            // }
 
             const workerInformation = await User.findOne({
                 where : {
@@ -93,27 +98,27 @@ const post = async (req, res) => {
                 }
             })
 
-            let updatedMinutes = workerInformation.dutyMinutes + dutyMinutes
+            // let updatedMinutes = workerInformation.dutyMinutes + dutyMinutes
             let updatedHours = workerInformation.dutyHours + dutyHours
-            while (true){
-                if(updatedMinutes >= 60){
-                    updatedMinutes -= 60
-                    updatedHours++
-                }else break
-            }
+            // while (true){
+                // if(updatedMinutes >= 60){
+                    // updatedMinutes -= 60
+                    // updatedHours++
+                // }else break
+            // }
 
-            await workerInformation.update({dutyMinutes : updatedMinutes})
+            // await workerInformation.update({dutyMinutes : updatedMinutes})
             await workerInformation.update({dutyHours : updatedHours})
 
             const dutyInformationToday = await DutyInformation.findByPk(todayDuty.infoID);
 
             (offDutyTime[0] < 10) ? offDutyTime[0] = "0"+offDutyTime[0] : offDutyTime[0];
-            (offDutyTime[1] < 10) ? offDutyTime[1] = "0"+offDutyTime[1] : offDutyTime[1];
+            // (offDutyTime[1] < 10) ? offDutyTime[1] = "0"+offDutyTime[1] : offDutyTime[1];
 
             (onDutyTime[0] < 10) ? onDutyTime[0] = "0"+onDutyTime[0] : onDutyTime[0];
-            (onDutyTime[1] < 10) ? onDutyTime[1] = "0"+onDutyTime[1] : onDutyTime[1];
+            // (onDutyTime[1] < 10) ? onDutyTime[1] = "0"+onDutyTime[1] : onDutyTime[1];
 
-            dutyInformationToday.update({endTime : `${offDutyTime[0]} : ${offDutyTime[1]}`})
+            dutyInformationToday.update({endTime : `${offDutyTime[0]}`}) //  : ${offDutyTime[1]}
 
             await todayDuty.destroy()
         }else
@@ -122,7 +127,7 @@ const post = async (req, res) => {
 
     }else if(req.query.action == "password"){
         await Setting.findOne({where : {name : "password"}}).then((result) => {
-            (req.body.password = result.value) ? res.send("ok") : res.send("no")
+            (req.body.password == result.value) ? res.send("ok") : res.send("no")
         })
     }
 }
