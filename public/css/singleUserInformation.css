@@ -97,6 +97,7 @@ li{
     border-radius: 7px;
     cursor: pointer;
     user-select: none;
+    font-size: 11px !important;
 }
 
 #dutyInformations{
