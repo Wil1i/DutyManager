@@ -24,3 +24,4 @@
       [ ] Neshoon dadane saate daghighe hazeri zadan dar table
       [ ] Neshoon dadane picture karbar va vaziate konooni be soorate stroke story insta
       
+- [ ] Fix Duty glitch (age saate 12:59 on kone va 13:01 off kone 1 saat time mikhore)
