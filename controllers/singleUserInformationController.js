@@ -1,6 +1,7 @@
 const Duty = require("../models/Duty")
 const DutyInformation = require("../models/DutyInformation")
 const User = require("../models/User")
+const pDate = require("persian-date")
 
 const get = async (req, res) => {
 
@@ -21,12 +22,15 @@ const get = async (req, res) => {
         }
     })
 
+    const persianDate = new pDate()
+
     res.render("singleUserInformation.ejs", {
         user : req.user,
         flash : req.flash(),
         isUserOnDuty,
         dutyInformation,
-        userInfo
+        userInfo,
+        d : {month : persianDate.month(), year : persianDate.year()}
     })
 }
 

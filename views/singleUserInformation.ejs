@@ -36,8 +36,24 @@
             </li>
 
             <li>
-                ساعت کاری
-                <p><%=userInfo.dutyHours%> : <%=userInfo.dutyMinutes%></p>
+                ساعت کاری کل
+                <p><%=userInfo.dutyHours%></p>
+            </li>
+
+            <% let hours = 0 %>
+            <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month) hours += duty.time}) %>
+
+            <% let hoursInYear = 0 %>
+            <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[0]) == d.year) hoursInYear += duty.time}) %>
+
+            <li>
+                ساعت کاری در این ماه
+                <p><%=hours%></p>
+            </li>
+
+            <li>
+                ساعت کاری در این سال
+                <p><%=hoursInYear%></p>
             </li>
         </ul>
 
