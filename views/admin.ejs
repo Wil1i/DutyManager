@@ -18,22 +18,22 @@
             <li class="userContainer mainContainer">
                 <p class="imageHandler"></p>
 
-                <p>نام و نام خانوادگی</p>
+                <input placeholder="نام و نام خانوادگی" id="searchBox">
 
                 <p>کد پرسنلی</p>
 
                 <p>مقام</p>
 
-                <p>ساعت کاری</p>
+                <p id="dutyHoursFilter">ساعت کاری</p>
                 
                 <p>تاریخ تولد</p>
             </li>
 
-            <ul>
+            <ul id="usersHandlerUL">
                 
 
                 <% users.forEach((u) => { %>
-                    <li class="userContainer hover" id="<%=u.codePersoneli%>">
+                    <li class="userContainer hover onFilter" id="<%=u.codePersoneli%>">
                         <p class="imageHandler">
                             <span class="<%= dutyList.includes(u.codePersoneli) ? "online" : "offline" %>" style="display: block; width: 10px; height: 10px; border-radius: 50%;margin-right: 15px;"></span>
                             <img src="/uploads/<%= (u.profile && u.profile !== "") ? u.profile : "profile.png" %>">
@@ -45,7 +45,7 @@
 
                         <p><%= (u.userRank) ? u.userRank : "تایین نشده" %></p>
 
-                        <p><%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %> : <%= (u.dutyMinutes < 10) ? `0${u.dutyMinutes}` : u.dutyMinutes %></p>
+                        <p><%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %></p>
                         
                         <p><%= u.birthday %></p>
                     </li>
@@ -57,6 +57,10 @@
 
     <script>
         var userContainers = document.querySelectorAll(".userContainer")
+        var dutyHoursFilter = document.getElementById("dutyHoursFilter")
+        var searchBox = document.getElementById("searchBox")
+        var userNames = document.querySelectorAll(".userName")
+        
 
         for(let i = 0; i < userContainers.length; i++){
             if(userContainers[i].id){
@@ -65,6 +69,39 @@
                 })
             }
         }
+
+        dutyHoursFilter.addEventListener("click", () => {
+            var filterThings = document.querySelectorAll(".onFilter")
+            var usersHandler = document.getElementById("usersHandlerUL")
+            for(let i = 0; i < filterThings.length; i++){
+                var target = filterThings[filterThings.length - (i+1)]
+                usersHandler.appendChild(target)
+            }
+        })
+
+        searchBox.addEventListener("keypress", (e) => {
+            for(let i = 0; i < userNames.length; i++){
+                var target = userNames[i]
+                if(!target.innerHTML.includes(searchBox.value + e.key)) {
+                    target.parentNode.style.display = "none"
+                }else{
+                    target.parentNode.style.display = "flex"
+                }
+            }
+        })
+
+        searchBox.addEventListener("keydown", (e) => {
+            if(e.key == "Backspace"){
+                for(let i = 0; i < userNames.length; i++){
+                var target = userNames[i]
+                if(!target.innerHTML.includes(searchBox.value.substring(0, searchBox.value.length-1))) {
+                    target.parentNode.style.display = "none"
+                }else{
+                    target.parentNode.style.display = "flex"
+                }
+            }
+            }
+        })
     </script>
 
 </body>

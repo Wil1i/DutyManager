@@ -115,3 +115,15 @@ li{
 .online{
     background-color: var(--success);
 }
+
+#searchBox{
+    border:none;
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    transition: box-shadow .2s ease-in-out;
+}
+
+#searchBox:hover{
+    box-shadow: 0 0 10px 3px rgb(199, 199, 199);
+}
