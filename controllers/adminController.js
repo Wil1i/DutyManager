@@ -15,7 +15,8 @@ const get = async (req, res) => {
         user : req.user,
         flash : req.flash(),
         users,
-        dutyList
+        dutyList,
+        duties
     })
 }
 

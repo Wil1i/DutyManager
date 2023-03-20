@@ -7,7 +7,10 @@ const passwordInput = document.getElementById("firstTimePassword")
 const passwordAlert = document.getElementById("passwordAlert")
 const locker = [document.getElementById("passwordBoxHandler"), document.getElementById("passwordContainer")]
 
+let timeout;
+
 function showAlert(object, text, defaultText, color, defaultColor){
+    clearTimeout(timeout)
     object.style.opacity = 0.2
     setTimeout(() => {
     object.innerHTML = text
@@ -15,7 +18,7 @@ function showAlert(object, text, defaultText, color, defaultColor){
     object.style.opacity = 1
     }, 200);
 
-    setTimeout(() => {
+    timeout = setTimeout(() => {
     object.style.opacity = 0.2
     setTimeout(() => {
         object.innerHTML = defaultText
