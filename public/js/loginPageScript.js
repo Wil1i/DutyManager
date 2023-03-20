@@ -29,8 +29,8 @@ loginButton.addEventListener("click", async () => {
     const loginRequest = await axios.post("/?action=login", {
         codePersoneli : codePersoneli.value
     })
-    console.log(loginRequest.data)
-    if(loginRequest.data == undefined){
+
+    if(loginRequest.data == undefined || !loginRequest.data){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
         codePersoneli.value = ""
     }else if(loginRequest.data.isDuty == true){
