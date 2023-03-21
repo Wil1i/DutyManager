@@ -13,7 +13,7 @@
     <div id="mainContainer">
         <h1>افزودن کاربر</h1>
 
-        <form id="inputBox" action="/admin/new" method="post">
+        <form id="inputBox" action="/admin/new" method="post" enctype="multipart/form-data">
             <div class="inputBoxHandler">
 
                 <div class="column">
@@ -28,7 +28,7 @@
                     <input required type="text" name="day" class="size1 c" placeholder="روز">
                 </div>
                 <div class="column">
-                    <input disabled type="file" name="file" name="" id="" class="size10">
+                    <input type="file" name="file" name="" id="" class="size10">
                 </div>
 
             </div>

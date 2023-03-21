@@ -10,13 +10,6 @@ const get = (req, res) => {
 }
 
 const post = async (req, res) => {
-    // try {
-    //     await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toFile(__dirname + `../public/uploads/${req.file.originalname}`)
-    //     res.status(201).send('Image uploaded succesfully')
-    // } catch (error) {
-    //     console.log(error)
-    //     res.status(400).send(error)
-    // }
 
     const lastCodePersoneli = await Setting.findOne({
         where : {
@@ -43,6 +36,7 @@ const post = async (req, res) => {
         firstName : req.body.firstName,
         lastName : req.body.lastName,
         userRank : req.body.rank,
+        profile : req.file.filename,
         dutyHours : 0,
         dutyMinutes : 0
     })

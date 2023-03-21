@@ -35,13 +35,11 @@
                 <% users.forEach((u) => { %>
                     <li class="userContainer hover onFilter" id="<%=u.codePersoneli%>">
                         <p class="imageHandler">
-                            <span 
-                            <% if(dutyList.includes(u.codePersoneli)){ %>
-                                title="حضور از ساعت <%= duties.find(d => d.codePersoneli == u.codePersoneli).startTime %>"
-                            <%}%>
-
-                            class="<%= dutyList.includes(u.codePersoneli) ? "online" : "offline" %>" style="display: block; width: 10px; height: 10px; border-radius: 50%;margin-right: 15px;"></span>
-                            <img src="/uploads/<%= (u.profile && u.profile !== "") ? u.profile : "profile.png" %>">
+                            <img 
+                            <% if(duties.find(d => d.codePersoneli == u.codePersoneli)){ %>
+                            title="حضور از ساعت <%= duties.find(d => d.codePersoneli == u.codePersoneli).startTime %>" 
+                            <% } %>
+                            src="/uploads/<%= (u.profile && u.profile != "") ? u.profile : "profile.png" %>" class="imageProfile <%= dutyList.includes(u.codePersoneli) ? "online" : "offline" %>">
                         </p>
 
                         <p class="userName"><%= u.firstName %> <%= u.lastName %></p>
