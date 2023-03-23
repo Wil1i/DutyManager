@@ -14,7 +14,6 @@ const get = (req, res) => {
 }
 
 const post = async (req, res) => {
-    console.log(1)
     if(req.query.action == "login"){
         const targetUser = await User.findOne({
             where : {

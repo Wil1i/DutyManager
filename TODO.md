@@ -18,11 +18,11 @@
       [x] Be tartib bashe az saate karie ziad be kam
         [x] Qabeliat taqir filter be az kam be ziad
       [x] Search box dashte bashe
-    [ ] Single user information page
+    [x] Single user information page
       [x] Neshoon dadne saate kari dar 1 mah
       [x] Neshoon dadane saate kari dar 1 sal
       [x] Neshoon dadane saate daghighe hazeri zadan dar table
-      [ ] Neshoon dadane picture karbar va vaziate konooni be soorate stroke story insta
+      [x] Neshoon dadane picture karbar va vaziate konooni be soorate stroke story insta
       
 - [ ] Fix Duty glitch (age saate 12:59 on kone va 13:01 off kone 1 saat time mikhore)
 

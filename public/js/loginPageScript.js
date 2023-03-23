@@ -9,7 +9,9 @@ const locker = [document.getElementById("passwordBoxHandler"), document.getEleme
 
 let timeout;
 
-function showAlert(object, text, defaultText, color, defaultColor){
+function showAlert(object, text, defaultText, color, defaultColor, profile){
+    var profilePicture = document.getElementById("profilePicture")
+
     clearTimeout(timeout)
     object.style.opacity = 0.2
     setTimeout(() => {
@@ -26,6 +28,20 @@ function showAlert(object, text, defaultText, color, defaultColor){
         object.style.opacity = 1
     }, 200);
     }, 10000);
+
+    // if(profile){
+    //     profilePicture.src = `/uploads/${profile}`
+    //     profilePicture.style.display = "block"
+    //     setTimeout(() => {
+    //         profilePicture.style.opacity = "1"
+    //         setTimeout(() => {
+    //             profilePicture.style.opacity = "0"
+    //             setTimeout(() => {
+    //                 profilePicture.style.display = "none"
+    //             }, 200);
+    //         }, 10000);
+    //     }, 10);
+    // }
 }
 
 loginButton.addEventListener("click", async () => {
@@ -40,7 +56,7 @@ loginButton.addEventListener("click", async () => {
         showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، شما وارد شده اید.`, "اپل سرویس", "red", "black")
         codePersoneli.value = ""
     }else{
-        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black")
+        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black", loginRequest.data.dataValues.profile)
         codePersoneli.value = ""
     }
 })
