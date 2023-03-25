@@ -52,12 +52,15 @@ loginButton.addEventListener("click", async () => {
     if(loginRequest.data == undefined || !loginRequest.data || loginRequest.data == "undefined"){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
         codePersoneli.value = ""
+        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
     }else if(loginRequest.data.isDuty == true){
         showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، شما وارد شده اید.`, "اپل سرویس", "red", "black")
         codePersoneli.value = ""
+        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
     }else{
         showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black", loginRequest.data.dataValues.profile)
         codePersoneli.value = ""
+        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
     }
 })
 
@@ -69,19 +72,32 @@ logoutButton.addEventListener("click", async () => {
     if(logoutRequest.data == ""){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
         codePersoneli.value = ""
+        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
     }else{
         if(logoutRequest.data.includes("not duty")){
             showAlert(headerText, "شما وارد نشده اید", "اپل سرویس", "red", "black")
             codePersoneli.value = ""
+            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
         }else if(logoutRequest.data.includes("done")){
             showAlert(headerText, "با موفقیت خارج شدید", "اپل سرویس", "red", "black")
             codePersoneli.value = ""
+            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
         }
         
     }
+
 })
 
 passwordSubmitButton.addEventListener("click", async () => {
+    var s = document.getElementById("s")
+    if(s.requestFullscreen){
+        s.requestFullscreen()
+    }else if(s.webkitRequestFullscreen){
+        s.webkitRequestFullscreen()
+    }else if(s.msRequestFullscreen){
+        s.msRequestFullscreen()
+    }
+
     const passwordValidation = await axios.post("/?action=password", {
         password : passwordInput.value
     })
@@ -93,7 +109,7 @@ passwordSubmitButton.addEventListener("click", async () => {
         setTimeout(() => {
             locker[0].style.display = "none"
             locker[1].style.display = "none"
-            codePersoneli.focus()
+            // codePersoneli.focus()
         }, 300);
     }else{
         showAlert(passwordAlert, "رمز نامعتبر", "خوش آمدید!", "red", "black")

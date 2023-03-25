@@ -43,10 +43,10 @@ body{
   color: var(--main-color);
 }
 
-#codePersoneli:focus{
+.codePersoneliFocus{
   background-color: var(--main-color);
-  color: white;
-  letter-spacing: 5px;
+  color: white !important;
+  /* letter-spacing: 5px; */
 }
 
 .centerHandler{

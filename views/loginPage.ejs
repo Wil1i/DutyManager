@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa" dir="rtl" id="s">
   <head>
     <meta charset="utf-8">
     <title>سرویس مدیریت همکاران - اپل سرویس</title>
@@ -35,7 +35,7 @@
         <h1 id="loginH">ورود</h1>
         <p id="nameP">اپل سرویس</p>
         <div class="centerHandler" id="loginForm">
-          <input id="codePersoneli" type="number" name="code" autocomplete="off" required placeholder="...کد پرسنلی خود  را وارد کنید">
+          <input disabled id="codePersoneli" type="number" name="code" autocomplete="off" required placeholder="...کد پرسنلی خود  را وارد کنید">
           <div class="btnHandler">
             <button type="submit" name="login" id="loginButton">ورود</button>
             <button type="submit" name="logout" id="logoutButton">خروج</button>
@@ -48,6 +48,8 @@
     </div>
 
     <p id="customText">عید نوروز مبارک</p>
+
+    <%- include("templates/numpad.ejs", {inp : "codePersoneli"}) %>
 
     <script src="/js/axios.min.js"></script>
     <script src="/js/loginPageScript.js" defer></script>

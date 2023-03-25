@@ -1,0 +1,68 @@
+<style>
+    #numpad{
+        background-color: rgb(206, 206, 206);
+        border: 2px solid gray;
+        position: fixed;
+        border-radius: 7px;
+        right: 10px;
+        bottom: 10px;
+        display: flex;
+        padding: 10px;
+        flex-wrap: wrap;
+        width: 220px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #numpad > li{
+        list-style: none;
+        background-color: rgb(238, 238, 238);
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        border-radius: 7px;
+        font-size: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 50px;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    #numpad > li:active{
+        background-color: rgb(226, 223, 223);
+    }
+</style>
+
+<ul id="numpad">
+    <li class="number-numpad">3</li>
+    <li class="number-numpad">2</li>
+    <li class="number-numpad">1</li>
+    <li class="number-numpad">6</li>
+    <li class="number-numpad">5</li>
+    <li class="number-numpad">4</li>
+    <li class="number-numpad">9</li>
+    <li class="number-numpad">8</li>
+    <li class="number-numpad">7</li>
+    <li id="delete-numpad">></li>
+    <li class="number-numpad">0</li>
+</ul>
+
+<script>
+    var input = document.getElementById("<%=inp%>")
+    var numbers = document.querySelectorAll(".number-numpad")
+    var del = document.getElementById("delete-numpad")
+
+    for(let i = 0; i < numbers.length; i++){
+        numbers[i].addEventListener("click", () => {
+            input.value = input.value + numbers[i].innerHTML
+            if(input.className !== "<%=inp%>Focus") input.className = "<%=inp%>Focus"
+        })
+    }
+
+    del.addEventListener("click", () => {
+        input.value = input.value.slice(0, -1)
+        if(input.value == "") input.className = ""
+    })
+</script>
