@@ -49,7 +49,7 @@ loginButton.addEventListener("click", async () => {
         codePersoneli : codePersoneli.value
     })
 
-    if(loginRequest.data == undefined || !loginRequest.data){
+    if(loginRequest.data == undefined || !loginRequest.data || loginRequest.data == "undefined"){
         showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
         codePersoneli.value = ""
     }else if(loginRequest.data.isDuty == true){
