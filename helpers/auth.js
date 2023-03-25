@@ -19,7 +19,7 @@ const isNotLoggedIn = (req, res, next) => {
 }
 
 const isUserAdmin = (req, res, next) => {
-    if(req.user.userRank != "مدیر") return res.redirect("/admin/login");
+    if(req.user.userRank != "مدیر" && req.user.userRank != "توسعه دهنده") return res.redirect("/admin/login");
     next()
 }
 
