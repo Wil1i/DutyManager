@@ -1,7 +1,7 @@
 const passport = require("passport")
 
 const get = (req, res) => {
-    res.render("adminLogin")
+    res.render("adminLogin", {flash : req.flash()})
 }
 
 const post = passport.authenticate("local", {
