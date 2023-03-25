@@ -214,14 +214,3 @@ input[type=number] {
   margin-bottom: -25px;
   border-radius : 50%
 }
-
-.flash{
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background-color: #cbc9f8;
-  border: 1px solid var(--main-color);
-  padding: 10px;
-  border-radius: 10px;
-  color: var(--main-color);
-}

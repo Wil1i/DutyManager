@@ -1,3 +1,14 @@
+.flash{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #cbc9f8;
+    border: 1px solid var(--main-color);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--main-color);
+}
+
 @font-face {
     font-family: 'vazir';
     src: url('../fonts/Vazirmatn-RD-Light.ttf') format('truetype');
