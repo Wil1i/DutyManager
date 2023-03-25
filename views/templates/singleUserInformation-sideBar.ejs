@@ -1,0 +1,55 @@
+<div class="rightInformation">
+
+    <div class="topInfo">
+
+        <div class="infoHandler">
+            <p><%=userInfo.firstName%> <%=userInfo.lastName%></p>
+            <p style="float: right; color: gray; font-weight: 200;"><%= userInfo.userRank %></p><h3 style="font-weight: 100;color: gray;margin: 0 5px;margin-top:2px;float: right;">·</h3><p style="float: right; color: gray; font-weight: 200"><%=(isUserOnDuty) ? "حاضر در کار" : "غایب در کار"%></p>
+        </div>
+
+        <div class="imageHandler">
+            <img src="/uploads/<%= userInfo.profile || "profile.png" %>" alt="">
+        </div>
+
+    </div>
+
+    <ul class="listItems">
+        <li>
+            کد پرسنلی
+            <p id="personeliCode"><%=userInfo.codePersoneli%></p>
+        </li>
+
+        <li>
+            تاریخ تولد
+            <p><%=userInfo.birthday%></p>
+        </li>
+
+        <li>
+            ساعت کاری کل
+            <p><%=userInfo.dutyHours%></p>
+        </li>
+
+        <% let hours = 0 %>
+        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month) hours += duty.time}) %>
+
+        <% let hoursInYear = 0 %>
+        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[0]) == d.year) hoursInYear += duty.time}) %>
+
+        <li>
+            ساعت کاری در این ماه
+            <p><%=hours%></p>
+        </li>
+
+        <li>
+            ساعت کاری در این سال
+            <p><%=hoursInYear%></p>
+        </li>
+    </ul>
+
+    <div style="width: 100%; height: 47px">
+        <p id="resetWorkHours" class="deleteUser" style="width: 48%; font-size: 14px; float: left" >ریست ساعت کاری</p>
+        <p id="deleteHistory" class="deleteUser" style="width: 48%; font-size: 14px; float: right">حذف تاریخچه کاری</p>
+    </div>
+    <p id="deleteUser" class="deleteUser" style="margin-top: 3px">حذف کاربر</p>
+
+</div>
