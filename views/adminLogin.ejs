@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="/css/fonts.css">
 </head>
 <body>
+    <% for(const key in flash){ %>               
+        <span role="alert" class="flash">
+          <%= flash[key] %>
+        </span>
+    <% } %>
     <form id="loginBox" action="/admin/login" method="post">
         <input required placeholder="Username" name="username" id="username" type="text">
         <input required placeholder="Password" name="password" id="password" type="password">

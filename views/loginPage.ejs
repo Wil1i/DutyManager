@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="/css/fonts.css">
   </head>
   <body>
-
+    <% for(const key in flash){ %>               
+      <span role="alert" class="flash">
+        <%= flash[key] %>
+      </span>
+    <% } %>
     <div id="passwordBoxHandler">
 
       <div id="passwordBox">

@@ -11,6 +11,12 @@
 </head>
 <body>
     
+    <% for(const key in flash){ %>               
+        <span role="alert" class="flash">
+          <%= flash[key] %>
+        </span>
+    <% } %>
+
     <a href="/admin/new" id="addUser">+</a>
 
     <div id="container">

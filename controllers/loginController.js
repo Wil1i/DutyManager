@@ -5,7 +5,7 @@ const DutyInformation = require("../models/DutyInformation")
 const Pdate = require("persian-date")
 
 const get = (req, res) => {
-
+    
     res.render("loginPage", {
         user : req.user,
         flash : req.flash()
