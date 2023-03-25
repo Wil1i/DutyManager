@@ -23,7 +23,7 @@ passport.use(new localStrategy(
         return done(null, false, { message : "نام کاربری و یا کلمه عبور اشتباه است" })
       }
       
-      if(user.userRank != "مدیر"){
+      if(user.userRank != "مدیر" && user.userRank != "توسعه دهنده"){
         return done(null, false, {message : "شما دسترسی به این بخش از سایت را ندارید"})
       }
 
