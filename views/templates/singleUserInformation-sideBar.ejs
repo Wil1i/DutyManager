@@ -1,10 +1,11 @@
+<p id="duty" style="display : none"><%= (isUserOnDuty) ? "on" : "off" %></p>
 <div class="rightInformation">
 
     <div class="topInfo">
 
         <div class="infoHandler">
             <p><%=userInfo.firstName%> <%=userInfo.lastName%></p>
-            <p style="float: right; color: gray; font-weight: 200;"><%= userInfo.userRank %></p><h3 style="font-weight: 100;color: gray;margin: 0 5px;margin-top:2px;float: right;">·</h3><p style="float: right; color: gray; font-weight: 200"><%=(isUserOnDuty) ? "حاضر در کار" : "غایب در کار"%></p>
+            <p id="userInformation" style="float: right; color: gray; font-weight: 200;"><%= userInfo.userRank %></p><h3 style="font-weight: 100;color: gray;margin: 0 5px;margin-top:2px;float: right;">·</h3><p style="float: right; color: gray; font-weight: 200"><%=(isUserOnDuty) ? "حاضر در کار" : "غایب در کار"%></p>
         </div>
 
         <div class="imageHandler">
@@ -62,8 +63,12 @@
     </ul>
 
     <div style="width: 100%; height: 47px">
-        <p id="resetWorkHours" class="deleteUser" style="width: 48%; font-size: 14px; float: left" >ریست ساعت کاری</p>
-        <p id="deleteHistory" class="deleteUser" style="width: 48%; font-size: 14px; float: right">حذف تاریخچه کاری</p>
+        <p id="stopWorking" class="deleteUser primaryBtn" style="width: 48%; font-size: 14px; float: left" >تغییر وضعیت</p>
+        <p id="editInformation" class="deleteUser primaryBtn" style="width: 48%; font-size: 14px; float: right">ویرایش اطلاعات</p>
+    </div>
+    <div style="width: 100%; height: 47px">
+        <p id="resetWorkHours" class="deleteUser primaryBtn" style="width: 48%; font-size: 14px; float: left" >ریست ساعت کاری</p>
+        <p id="deleteHistory" class="deleteUser primaryBtn" style="width: 48%; font-size: 14px; float: right">حذف تاریخچه کاری</p>
     </div>
     <p id="deleteUser" class="deleteUser" style="margin-top: 3px">حذف کاربر</p>
 

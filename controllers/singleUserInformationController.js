@@ -83,6 +83,21 @@ const post = async (req, res) => {
 
             break;
 
+        case "edit":
+            const targetUser = await User.findOne({where : {codePersoneli : req.params.id}})
+            if(targetUser.firstName != req.body.firstName) await targetUser.update({firstName : req.body.firstName})
+            if(targetUser.lastName != req.body.lastName) await targetUser.update({lastName : req.body.lastName})
+            if(targetUser.userRank != req.body.rank) await targetUser.update({userRank : req.body.rank})
+            let newBirthday = [targetUser.birthday.split(" / ")[0], targetUser.birthday.split(" / ")[1], targetUser.birthday.split(" / ")[2]]
+            if(newBirthday[0] != req.body.year) newBirthday[0] = Number(req.body.year)
+            if(newBirthday[1] != req.body.month) newBirthday[1] = Number(req.body.month)
+            if(newBirthday[2] != req.body.day) newBirthday[2] = Number(req.body.day)
+            await targetUser.update({birthday : `${newBirthday[0]} / ${newBirthday[1]} / ${newBirthday[2]}`})
+
+            if(req.file) await targetUser.update({profile : req.file.filename})
+            res.redirect(`/admin/${req.params.id}`)
+            break;
+
         default:
             res.send(false)
             break;
