@@ -18,6 +18,6 @@ Router.post("/new", isLoggedIn, isUserAdmin,uploader.single("file"), adminNewCon
 
 const singleUserInformationController = require("../controllers/singleUserInformationController")
 Router.get("/:id", isLoggedIn, isUserAdmin, singleUserInformationController.get)
-Router.post("/:id", isLoggedIn, isUserAdmin, singleUserInformationController.post)
+Router.post("/:id", isLoggedIn, isUserAdmin, uploader.single("file"), singleUserInformationController.post)
 
 module.exports = Router
