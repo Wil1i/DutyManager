@@ -32,15 +32,19 @@
         <% let hours = 0 %>
         <% let minutes = 0 %>
         <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month){ %>
+            <% if(duty.time){ %>
             <% hours += Number(duty.time.split(" : ")[0]) %>
             <% minutes += Number(duty.time.split(" : ")[1]) %>
+            <%}%>
         <% }}) %>
 
         <% let hoursInYear = 0 %>
         <% let minutesInYear = 0 %>
         <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[0]) == d.year) { %>
+            <% if(duty.time){ %>
             <% hoursInYear += Number(duty.time.split(" : ")[0]) %>
             <% minutesInYear += Number(duty.time.split(" : ")[1]) %>
+            <%}%>
         <% }}) %>
 
         <% if(minutes >= 60) {hours+=(minutes - (minutes % 60)) / 60; minutes -= minutes - (minutes % 60) } %>
