@@ -26,23 +26,34 @@
 
         <li>
             ساعت کاری کل
-            <p><%=userInfo.dutyHours%></p>
+            <p><%=userInfo.dutyHours%> : <%=userInfo.dutyMinutes%></p>
         </li>
 
         <% let hours = 0 %>
-        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month) hours += duty.time}) %>
+        <% let minutes = 0 %>
+        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month){ %>
+            <% hours += Number(duty.time.split(" : ")[0]) %>
+            <% minutes += Number(duty.time.split(" : ")[1]) %>
+        <% }}) %>
 
         <% let hoursInYear = 0 %>
-        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[0]) == d.year) hoursInYear += duty.time}) %>
+        <% let minutesInYear = 0 %>
+        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[0]) == d.year) { %>
+            <% hoursInYear += Number(duty.time.split(" : ")[0]) %>
+            <% minutesInYear += Number(duty.time.split(" : ")[1]) %>
+        <% }}) %>
+
+        <% if(minutes >= 60) {hours+=(minutes - (minutes % 60)) / 60; minutes -= minutes - (minutes % 60) } %>
+        <% if(minutesInYear >= 60) {hours+=(minutesInYear - (minutesInYear % 60)) / 60; minutesInYear -= minutesInYear - (minutesInYear % 60) } %>
 
         <li>
             ساعت کاری در این ماه
-            <p><%=hours%></p>
+            <p><%=hours%> : <%=minutes%></p>
         </li>
 
         <li>
             ساعت کاری در این سال
-            <p><%=hoursInYear%></p>
+            <p><%=hoursInYear%> : <%=minutesInYear%></p>
         </li>
     </ul>
 

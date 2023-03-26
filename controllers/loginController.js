@@ -40,12 +40,12 @@ const post = async (req, res) => {
 
                 await DutyInformation.create({
                     codePersoneli : req.body.codePersoneli,
-                    startTime : `${pHours}`, //  : ${pMinutes}
+                    startTime : `${pHours} : ${pMinutes}`,  
                     date : `${persianTime.year()}/${pMonth}/${pDay}`
                 }).then(async (diResult) => {
                     await Duty.create({
                         codePersoneli : req.body.codePersoneli,
-                        startTime : `${persianTime.hours()}`, // :${persianTime.minutes()}
+                        startTime : `${persianTime.hours()} : ${persianTime.minutes()}`, // :${persianTime.minutes()}
                         infoID : diResult.id
                     })
                 })
@@ -69,11 +69,20 @@ const post = async (req, res) => {
 
         if(todayDuty){
             let offDutyTime = new Pdate()
-            offDutyTime = offDutyTime.hours()
+            offDutyTime = [offDutyTime.hours(), offDutyTime.minutes()]
 
-            const onDutyTime = todayDuty.startTime
+            let onDutyTime = todayDuty.startTime.split(" : ")
+            onDutyTime = onDutyTime.map(d => Number(d))
 
-            let dutyHours = offDutyTime - onDutyTime
+            let dutyHours = offDutyTime[0] - onDutyTime[0]
+            let dutyMinutes;
+            if(offDutyTime[1] > onDutyTime[1]){
+                dutyMinutes = offDutyTime[1] - onDutyTime[1]
+            }else{
+                dutyHours--;
+                offDutyTime[1] += 60
+                dutyMinutes = offDutyTime[1] - onDutyTime[1]
+            }
 
             const workerInformation = await User.findOne({
                 where : {
@@ -82,17 +91,26 @@ const post = async (req, res) => {
             })
 
             let updatedHours = workerInformation.dutyHours + dutyHours
+            let updatedMinutes;
+            if(workerInformation.dutyMinutes + dutyMinutes >= 60){
+                const um = workerInformation.dutyMinutes + dutyMinutes
+                updatedHours += (um - (um % 60)) / 60
+                updatedMinutes = um % 60
+            }else updatedMinutes = workerInformation.dutyMinutes + dutyMinutes
 
             await workerInformation.update({dutyHours : updatedHours})
+            await workerInformation.update({dutyMinutes : updatedMinutes})
 
             const dutyInformationToday = await DutyInformation.findByPk(todayDuty.infoID);
 
-            (offDutyTime < 10) ? offDutyTime = "0"+offDutyTime : offDutyTime;
+            (offDutyTime[0] < 10) ? offDutyTime[0] = "0"+offDutyTime[0] : offDutyTime[0];
+            // (onDutyTime[0] < 10) ? onDutyTime[0] = "0"+onDutyTime[0] : onDutyTime[0];
 
-            (onDutyTime < 10) ? onDutyTime = "0"+onDutyTime : onDutyTime;
+            (offDutyTime[1] < 10) ? offDutyTime[1] = "0"+offDutyTime[1] : offDutyTime[1];
+            // (onDutyTime[1] < 10) ? onDutyTime[1] = "0"+onDutyTime[1] : onDutyTime[1];
 
-            await dutyInformationToday.update({endTime : `${offDutyTime}`}) //  : ${offDutyTime[1]}
-            await dutyInformationToday.update({time : dutyHours})
+            await dutyInformationToday.update({endTime : `${offDutyTime[0]} : ${offDutyTime[1]}`})
+            await dutyInformationToday.update({time : `${dutyHours} : ${dutyMinutes}`})
 
             await todayDuty.destroy()
         }else

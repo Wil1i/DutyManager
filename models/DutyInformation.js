@@ -26,7 +26,7 @@ const DutyInformation = db.define('dutyInformation', {
     },
 
     time : {
-        type : DataTypes.NUMBER
+        type : DataTypes.TEXT
     }
 
 }, {

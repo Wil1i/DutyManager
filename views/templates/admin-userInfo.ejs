@@ -13,7 +13,7 @@
 
     <p><%= (u.userRank) ? u.userRank : "تایین نشده" %></p>
 
-    <p><%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %></p>
+    <p><%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %> : <%= (u.dutyMinutes < 10) ? `0${u.dutyMinutes}` : u.dutyMinutes %></p>
     
     <p><%= u.birthday %></p>
 </li>
