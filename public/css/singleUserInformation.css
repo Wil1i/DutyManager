@@ -37,6 +37,10 @@ body{
     box-shadow: 0 0 10px 1px rgb(204, 204, 204);
 }
 
+.listItems{
+    margin-bottom : 15px
+}
+
 .topInfo{
     display: flex;
     align-items: center;
