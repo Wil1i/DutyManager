@@ -29,10 +29,9 @@
             ساعت کاری کل
             <p><%=userInfo.dutyHours%> : <%=userInfo.dutyMinutes%></p>
         </li>
-
         <% let hours = 0 %>
         <% let minutes = 0 %>
-        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == d.month){ %>
+        <% dutyInformation.forEach(duty => {if(Number(duty.date.split("/")[1]) == Number(d.month) && Number(duty.date.split("/")[0]) == Number(d.year)){ %>
             <% if(duty.time){ %>
             <% hours += Number(duty.time.split(" : ")[0]) %>
             <% minutes += Number(duty.time.split(" : ")[1]) %>
@@ -48,8 +47,11 @@
             <%}%>
         <% }}) %>
 
-        <% if(minutes >= 60) {hours+=(minutes - (minutes % 60)) / 60; minutes -= minutes - (minutes % 60) } %>
-        <% if(minutesInYear >= 60) {hours+=(minutesInYear - (minutesInYear % 60)) / 60; minutesInYear -= minutesInYear - (minutesInYear % 60) } %>
+        <% if(minutes >= 60) hours += ((minutes - (minutes % 60)) / 60) %>
+        <% if(minutes >= 60) minutes = minutes % 60 %>
+
+        <% if(minutesInYear >= 60) hoursInYear += ((minutesInYear - (minutesInYear % 60)) / 60) %>
+        <% if(minutesInYear >= 60) minutesInYear = minutesInYear % 60 %>
 
         <li>
             ساعت کاری در این ماه
