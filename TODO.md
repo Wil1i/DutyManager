@@ -2,7 +2,7 @@
 - [x] Baraye rah andaziye avalie password administrator bekhahad
 - [x] DataBase asli bar rooye system administrator bashad va be soorate localhost be tablet hazer dar mahal motasel shavad
 
-- [ ] Add kardane tag haye flash be safhe haye morede niaz baraye namayesh dadane alert ha
+- [x] Add kardane tag haye flash be safhe haye morede niaz baraye namayesh dadane alert ha
 
 - [x] Check workers activity using API every 10 secs using ajax
 
@@ -24,6 +24,6 @@
       [x] Neshoon dadane saate daghighe hazeri zadan dar table
       [x] Neshoon dadane picture karbar va vaziate konooni be soorate stroke story insta
       
-- [ ] Fix Duty glitch (age saate 12:59 on kone va 13:01 off kone 1 saat time mikhore)
+- [x] Fix Duty glitch (age saate 12:59 on kone va 13:01 off kone 1 saat time mikhore)
 
-- [ ] Add return option to every page
+- [x] Add return option to every page
