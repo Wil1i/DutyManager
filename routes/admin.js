@@ -1,6 +1,5 @@
 const express = require("express")
 const { isLoggedIn, isNotLoggedIn, isUserAdmin } = require("../helpers/auth")
-const { body } = require("express-validator")
 const Router = express.Router()
 const uploader = require("../helpers/uploader")
 

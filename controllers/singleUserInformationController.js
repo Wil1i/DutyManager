@@ -43,9 +43,7 @@ const post = async (req, res) => {
             }})
             if(findUser){
                 await findUser.update({dutyHours : 0})
-                await findUser.update({dutyMinutes : 0}).then(() => {
-                    res.send(true)
-                })
+                await findUser.update({dutyMinutes : 0}).then(() => { res.send(true) })
 
             }else res.send(undefined)
 
@@ -54,13 +52,9 @@ const post = async (req, res) => {
         case "deleteHistory":
 
             const findDutyInformations = await DutyInformation.findAll({where : {codePersoneli : req.params.id}})
-            findDutyInformations.forEach(async fdi => {
-                await fdi.destroy()
-            })
+            findDutyInformations.forEach(async fdi => { await fdi.destroy() })
 
-            setTimeout(() => {
-                res.send(true)                
-            }, 500);
+            setTimeout(() => { res.send(true) }, 500);
 
             break;
 
@@ -73,9 +67,7 @@ const post = async (req, res) => {
 
                 const userDutyInformations = await DutyInformation.findAll({where : {codePersoneli : req.params.id}})
 
-                userDutyInformations.forEach(async ud => {
-                    await ud.destroy()
-                })
+                userDutyInformations.forEach(async ud => { await ud.destroy() })
 
                 await findTargetUser.destroy()
                 res.send(true)

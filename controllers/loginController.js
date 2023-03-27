@@ -45,7 +45,7 @@ const post = async (req, res) => {
                 }).then(async (diResult) => {
                     await Duty.create({
                         codePersoneli : req.body.codePersoneli,
-                        startTime : `${persianTime.hours()} : ${persianTime.minutes()}`, // :${persianTime.minutes()}
+                        startTime : `${persianTime.hours()} : ${persianTime.minutes()}`,
                         infoID : diResult.id
                     })
                 })
@@ -104,10 +104,8 @@ const post = async (req, res) => {
             const dutyInformationToday = await DutyInformation.findByPk(todayDuty.infoID);
 
             (offDutyTime[0] < 10) ? offDutyTime[0] = "0"+offDutyTime[0] : offDutyTime[0];
-            // (onDutyTime[0] < 10) ? onDutyTime[0] = "0"+onDutyTime[0] : onDutyTime[0];
 
             (offDutyTime[1] < 10) ? offDutyTime[1] = "0"+offDutyTime[1] : offDutyTime[1];
-            // (onDutyTime[1] < 10) ? onDutyTime[1] = "0"+onDutyTime[1] : onDutyTime[1];
 
             await dutyInformationToday.update({endTime : `${offDutyTime[0]} : ${offDutyTime[1]}`})
             await dutyInformationToday.update({time : `${dutyHours} : ${dutyMinutes}`})
