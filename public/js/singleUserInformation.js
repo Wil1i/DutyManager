@@ -7,6 +7,17 @@ const duty = document.getElementById("duty")
 const editInformation = document.getElementById("editInformation")
 var editContainer = document.getElementById("containerHandler")
 var closeBtn = document.getElementById("close")
+var morakhasiBtn = document.getElementById("morakhasi")
+var morakhasiContainer = document.getElementById("containerHandlerMorakhasi")
+var morakhasiCloseBtn = document.getElementById("closeMorakhasi")
+
+morakhasiBtn.addEventListener("click", () => {
+    morakhasiContainer.style.display = "flex"
+})
+
+morakhasiCloseBtn.addEventListener("click", () => {
+    morakhasiContainer.style.display = "none"
+})
 
 closeBtn.addEventListener("click", () => {
     editContainer.style.display = "none"

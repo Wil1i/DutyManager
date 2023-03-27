@@ -1,6 +1,7 @@
 const Duty = require("../models/Duty")
 const DutyInformation = require("../models/DutyInformation")
 const User = require("../models/User")
+const Morakhasi = require("../models/Morakhasi")
 const pDate = require("persian-date")
 
 const get = async (req, res) => {
@@ -22,6 +23,8 @@ const get = async (req, res) => {
         }
     })
 
+    let morakhasi = await Morakhasi.findOne({where : {codePersoneli : req.params.id}}) || false
+
     const persianDate = new pDate()
 
     res.render("singleUserInformation.ejs", {
@@ -30,7 +33,8 @@ const get = async (req, res) => {
         isUserOnDuty,
         dutyInformation,
         userInfo,
-        d : {month : persianDate.month(), year : persianDate.year()}
+        morakhasi,
+        d : {day : persianDate.day(), month : persianDate.month(), year : persianDate.year()}
     })
 }
 
@@ -88,6 +92,17 @@ const post = async (req, res) => {
 
             if(req.file) await targetUser.update({profile : req.file.filename})
             res.redirect(`/admin/${req.params.id}`)
+            break;
+
+        case "morakhasi":
+            await Morakhasi.create({
+                codePersoneli : req.params.id,
+                startTime : `${req.body.year}/${req.body.month}/${req.body.day}`,
+                endTime : `${req.body.year2}/${req.body.month2}/${req.body.day2}`
+            }).then(() => {
+                res.redirect(`/admin/${req.params.id}`)
+            })
+
             break;
 
         default:
