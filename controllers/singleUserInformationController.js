@@ -105,6 +105,17 @@ const post = async (req, res) => {
 
             break;
 
+        case "deleteMorakhasi":
+            await Morakhasi.findOne({where : {codePersoneli : req.params.id}}).then(result => {
+                if(result){
+                    result.destroy().then(() => {
+                        res.send(true)
+                    })
+                }
+            })
+
+            break;
+
         default:
             res.send(false)
             break;

@@ -10,6 +10,13 @@ var closeBtn = document.getElementById("close")
 var morakhasiBtn = document.getElementById("morakhasi")
 var morakhasiContainer = document.getElementById("containerHandlerMorakhasi")
 var morakhasiCloseBtn = document.getElementById("closeMorakhasi")
+var deleteMorakhasiBtn = document.getElementById("delete-morakhasi")
+
+deleteMorakhasiBtn.addEventListener("click", () => {
+    axios.post(`/admin/${codePersoneli.textContent}?action=deleteMorakhasi`).then(result => {
+        if(result.data == true) location.reload()
+    })
+})
 
 morakhasiBtn.addEventListener("click", () => {
     morakhasiContainer.style.display = "flex"

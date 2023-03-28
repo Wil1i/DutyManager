@@ -94,7 +94,6 @@ li{
     color: rgb(182, 26, 26);
     padding: 10px 0;
     border-radius: 7px;
-    cursor: pointer;
     user-select: none;
     font-size: 11px !important;
 }
