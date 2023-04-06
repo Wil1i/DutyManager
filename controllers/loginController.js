@@ -3,9 +3,9 @@ const Setting = require("../models/Setting")
 const Duty = require("../models/Duty")
 const DutyInformation = require("../models/DutyInformation")
 const axios = require("axios")
+const token = require("../helpers/token")
 
 const get = (req, res) => {
-    
     res.render("loginPage", {
         user : req.user,
         flash : req.flash()
@@ -22,6 +22,7 @@ const post = async (req, res) => {
         })
 
         if(targetUser){
+            if(!targetUser.token) await token.createToken(req.body.codePersoneli)
 
             const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
             if(!isUserDuty){
@@ -47,7 +48,7 @@ const post = async (req, res) => {
                         infoID : diResult.id
                     })
                 })
-                const data = {...targetUser, isDuty : false}
+                const data = {...targetUser, isDuty : false, startTime : {hour : pHours, minute : pMinutes}}
                 res.send(data)
             }else{
                 const data = {...targetUser, isDuty : true}

@@ -1,6 +1,7 @@
 // const sharp = require("sharp")
 const User = require("../models/User")
 const Setting = require("../models/Setting")
+const token = require("../helpers/token")
 
 const get = (req, res) => {
     res.render("adminNew",{
@@ -39,6 +40,8 @@ const post = async (req, res) => {
         profile : (req.file) ? req.file.filename : undefined,
         dutyHours : 0,
         dutyMinutes : 0
+    }).then(() => {
+        token.createToken(codePersoneli)
     })
 
     await lastCodePersoneli.update({value : codePersoneli})

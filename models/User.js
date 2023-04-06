@@ -40,6 +40,10 @@ const user = db.define('user', {
 
     dutyMinutes : {
         type : DataTypes.NUMBER
+    },
+
+    token : {
+        type : DataTypes.STRING
     }
 
 }, {
