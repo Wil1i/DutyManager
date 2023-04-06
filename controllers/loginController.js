@@ -2,7 +2,7 @@ const User = require("../models/User")
 const Setting = require("../models/Setting")
 const Duty = require("../models/Duty")
 const DutyInformation = require("../models/DutyInformation")
-const Pdate = require("persian-date")
+const axios = require("axios")
 
 const get = (req, res) => {
     
@@ -26,26 +26,24 @@ const post = async (req, res) => {
             const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
             if(!isUserDuty){
 
-                const persianTime = new Pdate()
+                const pTime = await axios.get("https://api.keybit.ir/time/")
 
-                let pHours = persianTime.hours()
-                let pMinutes = persianTime.minutes()
-                let pMonth = persianTime.month()
-                let pDay = persianTime.day();
+                const pDate = pTime.data.date.full.official.usual.en.split("/")
+                const pDate2 = pTime.data.time24.full.en.split(":")
 
-                (pHours < 10) ? pHours = "0" + pHours : false;
-                (pMinutes < 10) ? pMinutes = "0" + pMinutes : false;
-                (pMonth < 10) ? pMonth = "0" + pMonth : false;
-                (pDay < 10) ? pDay = "0" + pDay : false;
+                let pHours = Number(pDate2[0]) - 1
+                let pMinutes = Number(pDate2[1])
+                let pMonth = Number(pDate[1])
+                let pDay = Number(pDate[2]);
 
                 await DutyInformation.create({
                     codePersoneli : req.body.codePersoneli,
                     startTime : `${pHours} : ${pMinutes}`,  
-                    date : `${persianTime.year()}/${pMonth}/${pDay}`
+                    date : `${pDate[0]}/${pMonth}/${pDay}`
                 }).then(async (diResult) => {
                     await Duty.create({
                         codePersoneli : req.body.codePersoneli,
-                        startTime : `${persianTime.hours()} : ${persianTime.minutes()}`,
+                        startTime : `${pHours} : ${pMinutes}`,
                         infoID : diResult.id
                     })
                 })
@@ -68,8 +66,11 @@ const post = async (req, res) => {
         })
 
         if(todayDuty){
-            let offDutyTime = new Pdate()
-            offDutyTime = [offDutyTime.hours(), offDutyTime.minutes()]
+            let offDutyTime = await axios.get("https://api.keybit.ir/time/")
+
+            const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
+            const pDate2 = offDutyTime.data.time24.full.en.split(":")
+            offDutyTime = [Number(pDate2[0]) - 1, Number(pDate2[1])]
 
             let onDutyTime = todayDuty.startTime.split(" : ")
             onDutyTime = onDutyTime.map(d => Number(d))
