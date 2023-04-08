@@ -27,12 +27,16 @@ const post = async (req, res) => {
             const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
             if(!isUserDuty){
 
-                const pTime = await axios.get("http://api.keybit.ir/time/")
+                // const pTime = await axios.get("http://api.keybit.ir/time/")
+                const pTime = await axios.get("https://prayer.aviny.com/api/prayertimes/1")
+                // const pDate = pTime.data.date.full.official.usual.en.split("/")
+                // const pDate2 = pTime.data.time24.full.en.split(":")
 
-                const pDate = pTime.data.date.full.official.usual.en.split("/")
-                const pDate2 = pTime.data.time24.full.en.split(":")
+                let pDate = pTime.data.Today.split(" - ")[0].split("/")
+                let pDate2 = pTime.data.Today.split(" - ")[1].split(" ")[0].split(":")
+                if(pTime.data.Today.split(" - ")[1].split(" ")[1] == "PM") pDate2[0] = Number(pDate2[0]) + 12
 
-                let pHours = Number(pDate2[0]) - 1
+                let pHours = Number(pDate2[0]) 
                 let pMinutes = Number(pDate2[1])
                 let pMonth = Number(pDate[1])
                 let pDay = Number(pDate[2]);
@@ -67,11 +71,14 @@ const post = async (req, res) => {
         })
 
         if(todayDuty){
-            let offDutyTime = await axios.get("http://api.keybit.ir/time/")
+            let offDutyTime = await axios.get("https://prayer.aviny.com/api/prayertimes/1")
 
-            const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
-            const pDate2 = offDutyTime.data.time24.full.en.split(":")
-            offDutyTime = [Number(pDate2[0]) - 1, Number(pDate2[1])]
+            // const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
+            // const pDate2 = offDutyTime.data.time24.full.en.split(":")
+
+            let pDate2 = offDutyTime.data.Today.split(" - ")[1].split(" ")[0].split(":")
+            if(offDutyTime.data.Today.split(" - ")[1].split(" ")[1] == "PM") pDate2[0] = Number(pDate2[0]) + 12
+            offDutyTime = [Number(pDate2[0]), Number(pDate2[1])]
 
             let onDutyTime = todayDuty.startTime.split(" : ")
             onDutyTime = onDutyTime.map(d => Number(d))
