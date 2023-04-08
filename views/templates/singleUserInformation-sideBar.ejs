@@ -91,7 +91,7 @@
             <p style="overflow-wrap: anywhere;user-select: all;"><%if(userInfo.token){ %>
                 <%=userInfo.token%>
             <% }else{ %>
-                <form action="/admin/<%=userInfo.id%>?action=token" style="float: left;" method="post">
+                <form action="/admin/<%=userInfo.codePersoneli%>?action=token" style="float: left;" method="post">
                     <button class="primaryBtn" style="width: 100px">ساخت</button>
                 </form>
             <% }%></p>
