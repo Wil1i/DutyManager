@@ -40,8 +40,6 @@ const post = async (req, res) => {
         profile : (req.file) ? req.file.filename : undefined,
         dutyHours : 0,
         dutyMinutes : 0
-    }).then(() => {
-        token.createToken(codePersoneli)
     })
 
     await lastCodePersoneli.update({value : codePersoneli})
