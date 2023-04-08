@@ -27,7 +27,7 @@ const post = async (req, res) => {
             const isUserDuty = await Duty.findOne({where : {codePersoneli : req.body.codePersoneli}})
             if(!isUserDuty){
 
-                const pTime = await axios.get("https://api.keybit.ir/time/")
+                const pTime = await axios.get("http://api.keybit.ir/time/")
 
                 const pDate = pTime.data.date.full.official.usual.en.split("/")
                 const pDate2 = pTime.data.time24.full.en.split(":")
@@ -67,7 +67,7 @@ const post = async (req, res) => {
         })
 
         if(todayDuty){
-            let offDutyTime = await axios.get("https://api.keybit.ir/time/")
+            let offDutyTime = await axios.get("http://api.keybit.ir/time/")
 
             const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
             const pDate2 = offDutyTime.data.time24.full.en.split(":")

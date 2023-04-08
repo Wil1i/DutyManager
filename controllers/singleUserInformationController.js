@@ -3,6 +3,7 @@ const DutyInformation = require("../models/DutyInformation")
 const User = require("../models/User")
 const Morakhasi = require("../models/Morakhasi")
 const pDate = require("persian-date")
+const token = require("../helpers/token")
 
 const get = async (req, res) => {
 
@@ -77,6 +78,14 @@ const post = async (req, res) => {
                 res.send(true)
             }else res.send(undefined)
 
+            break;
+
+        case "token":
+            token.createToken(req.params.id).then(() => {
+                setTimeout(() => {                    
+                    res.redirect(`/admin/${req.params.id}`)
+                }, 500);
+            })
             break;
 
         case "edit":
