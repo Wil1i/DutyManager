@@ -6,7 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const morgan = require("morgan");
-// This is test commit for new device !
+
 const app = express()
 
 app.use(bodyParser.json());
