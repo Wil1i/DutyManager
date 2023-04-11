@@ -27,6 +27,9 @@ require("./helpers/passport")
 const routes = require("./routes");
 app.use("/", routes);
 
+const APIRoutes = require("./routes/api")
+app.use("/api", APIRoutes)
+
 const adminRoutes = require("./routes/admin")
 app.use("/admin", adminRoutes)
 
