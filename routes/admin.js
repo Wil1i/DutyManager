@@ -13,7 +13,7 @@ Router.post("/login", isNotLoggedIn,adminLoginController.post, adminLoginControl
 
 const adminNewController = require("../controllers/adminNewController")
 Router.get("/new", isLoggedIn, isUserAdmin, adminNewController.get)
-Router.post("/new", isLoggedIn, isUserAdmin,uploader.single("file"), adminNewController.post)
+Router.post("/new", uploader.single("file"), adminNewController.post)
 
 const singleUserInformationController = require("../controllers/singleUserInformationController")
 Router.get("/:id", isLoggedIn, isUserAdmin, singleUserInformationController.get)
