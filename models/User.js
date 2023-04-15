@@ -27,7 +27,8 @@ const user = db.define('user', {
     },
 
     profile : {
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
+        defaultValue : null
     },
 
     userRank : {
@@ -43,7 +44,8 @@ const user = db.define('user', {
     },
 
     token : {
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
+        defaultValue : null
     }
 
 }, {
