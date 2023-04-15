@@ -13,7 +13,7 @@
         <div id="box">
             <img id="prof" src="/uploads/profile.png" alt="">
             <div>
-                <h1 id="text">با موفقیت شروع به کار کردید.</h1>
+                <h1 id="text">در حال ورود ...</h1>
                 <p style="text-align : center; color: gray; margin-top: 20px;" id="time">ساعت شروع : -</p>
             </div>
             <button id="logout">خروج</button>
@@ -30,7 +30,7 @@
             console.log(result)
             if(result){
                 const data = result.data.dataValues
-                imageProfile.src = `/uploads/${data.profile}`
+                if(data.profile) imageProfile.src = `/uploads/${data.profile}`
                 text.innerHTML = `${data.firstName} ${data.lastName} عزیز، خوش آمدید!`
                 time.innerHTML = `ساعت شروع : ${result.data.startTime.minute} : ${result.data.startTime.hour}`
             }
