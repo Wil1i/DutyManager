@@ -1,12 +1,20 @@
 {
     "app": {
       "port": 80,
-      "secret" : "SECRET CODE HERE"
+      "secret" : "SECRET CODE HERE",
+      "firstMeetPassword" : "PASSWORD",
+      "firstName" : "FIRST_NAME",
+      "lastName" : "LAST_NAME"
     },
     "database": {
       "host": "HOST",
       "user": "USER",
       "password": "PASSWORD",
       "name": "DATABASE NAME"
+    },
+    "defualtUser" : {
+      "firstName" : "FIRST_NAME",
+      "lastName" : "LAST_NAME",
+      "userRank" : "USER_RANK"
     }
   }
