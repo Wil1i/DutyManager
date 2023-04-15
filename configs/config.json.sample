@@ -3,8 +3,7 @@
       "port": 80,
       "secret" : "SECRET CODE HERE",
       "firstMeetPassword" : "PASSWORD",
-      "firstName" : "FIRST_NAME",
-      "lastName" : "LAST_NAME"
+      "startCodePersoneli" : "NUMBER"
     },
     "database": {
       "host": "HOST",
