@@ -6,8 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const morgan = require("morgan");
-const User = require("./models/User")
-const axios = require("axios")
+const dbChecker = require("./helpers/dbChecker")
 
 const app = express()
 
@@ -32,22 +31,7 @@ app.use("/", routes);
 const adminRoutes = require("./routes/admin")
 app.use("/admin", adminRoutes)
 
-User.findAll().then(result => {
-	if(!result || !result[0]){
-		axios.post("/new", {
-			year : "0",
-			month : "0",
-			day : "0",
-			firstName : "Developer",
-			lastName : "lastName",
-			userRank : "توسعه دهنده",
-			dutyHours : 0,
-			dutyMinutes : 0
-		}).then(() => {
-			console.log(`Defualt admin user added 'As Developer'`)
-		})
-	}
-})
+dbChecker() // Check everything in database which is set for defualt
 
 app.listen(config.app.port, () => {
   console.log(`Server is running on ${config.app.port}`);
