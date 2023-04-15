@@ -1,12 +1,19 @@
 {
     "app": {
       "port": 80,
-      "secret" : "appleServiceSecretCode"
+      "secret" : "appleServiceSecretCode",
+      "startCodePersoneli" : "1",
+      "firstMeetPassword" : "appleservice"
     },
     "database": {
       "host": "localhost",
       "user": "root",
-      "password": "root",
+      "password": "",
       "name": "appleservice"
+    },
+    "defualtUser":{
+      "firstName" : "شایان",
+      "lastName" : "نصرآبادی",
+      "userRank" : "توسعه دهنده"
     }
 }
