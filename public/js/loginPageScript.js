@@ -29,45 +29,53 @@ function showAlert(object, text, defaultText, color, defaultColor, profile){
 }
 
 loginButton.addEventListener("click", async () => {
-    const loginRequest = await axios.post("/?action=login", {
-        codePersoneli : codePersoneli.value
-    })
+    if(codePersoneli.value){
+        const loginRequest = await axios.post("/?action=login", {
+            codePersoneli : codePersoneli.value
+        })
 
-    if(loginRequest.data == undefined || !loginRequest.data || loginRequest.data == "undefined"){
-        showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
-        codePersoneli.value = ""
-        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
-    }else if(loginRequest.data.isDuty == true){
-        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، شما وارد شده اید.`, "اپل سرویس", "red", "black")
-        codePersoneli.value = ""
-        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        if(loginRequest.data == undefined || !loginRequest.data || loginRequest.data == "undefined"){
+            showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
+            codePersoneli.value = ""
+            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        }else if(loginRequest.data.isDuty == true){
+            showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، شما وارد شده اید.`, "اپل سرویس", "red", "black")
+            codePersoneli.value = ""
+            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        }else{
+            showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black", loginRequest.data.dataValues.profile)
+            codePersoneli.value = ""
+            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        }
     }else{
-        showAlert(headerText, `${loginRequest.data.dataValues.firstName} ${loginRequest.data.dataValues.lastName} عزیز، خوش آمدید!`, "اپل سرویس", "green", "black", loginRequest.data.dataValues.profile)
-        codePersoneli.value = ""
-        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        showAlert(headerText, `کد پرسنلی خود را وارد کنید`, "اپل سرویس", "green", "black")
     }
 })
 
 logoutButton.addEventListener("click", async () => {
-    const logoutRequest = await axios.post("/?action=logout", {
-        codePersoneli : codePersoneli.value
-    })
+    if(codePersoneli.value){
+        const logoutRequest = await axios.post("/?action=logout", {
+            codePersoneli : codePersoneli.value
+        })
 
-    if(logoutRequest.data == ""){
-        showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
-        codePersoneli.value = ""
-        if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
-    }else{
-        if(logoutRequest.data.includes("not duty")){
-            showAlert(headerText, "شما وارد نشده اید", "اپل سرویس", "red", "black")
+        if(logoutRequest.data == ""){
+            showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black")
             codePersoneli.value = ""
             if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
-        }else if(logoutRequest.data.includes("done")){
-            showAlert(headerText, "با موفقیت خارج شدید", "اپل سرویس", "red", "black")
-            codePersoneli.value = ""
-            if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+        }else{
+            if(logoutRequest.data.includes("not duty")){
+                showAlert(headerText, "شما وارد نشده اید", "اپل سرویس", "red", "black")
+                codePersoneli.value = ""
+                if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+            }else if(logoutRequest.data.includes("done")){
+                showAlert(headerText, "با موفقیت خارج شدید", "اپل سرویس", "red", "black")
+                codePersoneli.value = ""
+                if(codePersoneli.className == "codePersoneliFocus") codePersoneli.className = ""
+            }
+            
         }
-        
+    }else{
+        showAlert(headerText, "کد پرسنلی خود را وارد کنید", "اپل سرویس", "red", "black")
     }
 
 })
