@@ -37,7 +37,7 @@ const post = async (req, res) => {
         firstName : req.body.firstName,
         lastName : req.body.lastName,
         userRank : req.body.rank,
-        profile : (req.file) ? req.file.filename : undefined,
+        profile : (req.file && req.file.filename) ? req.file.filename : "",
         dutyHours : 0,
         dutyMinutes : 0
     })

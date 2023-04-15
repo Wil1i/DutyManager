@@ -46,7 +46,8 @@ const dbChecker = async () => {
                 day : "0",
                 firstName : config.defualtUser.firstName,
                 lastName : config.defualtUser.lastName,
-                userRank : config.defualtUser.userRank,
+                rank : config.defualtUser.userRank,
+                profile : "",
                 dutyHours : 0,
                 dutyMinutes : 0
             }).then((result) => {
