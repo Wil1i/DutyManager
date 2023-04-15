@@ -10,7 +10,7 @@ const get = (req, res) => {
 
 const post = async (req, res) => {
     if(token.auth(req.body.token, req.body.id)){
-        const loginUser = await axios.post("http://192.168.1.153:5050/?action=login", {codePersoneli : req.body.id})
+        const loginUser = await axios.post("http://192.168.1.171:5050/?action=login", {codePersoneli : req.body.id})
         if(loginUser && loginUser.data.isDuty == false){
             res.send(loginUser.data)
         }else{

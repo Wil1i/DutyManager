@@ -27,6 +27,7 @@
         var time = document.getElementById("time")
         var logout = document.getElementById("logout")
         axios.post('/al', {id : "<%=id%>", token : '<%=token%>'}).then((result) => {
+            console.log(result)
             if(result){
                 const data = result.data.dataValues
                 imageProfile.src = `/uploads/${data.profile}`
