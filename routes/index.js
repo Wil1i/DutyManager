@@ -9,4 +9,7 @@ const autoLoginController = require("../controllers/autoLoginController.js");
 Router.get("/al", autoLoginController.get);
 Router.post("/al", autoLoginController.post);
 
+const mobileVersionController = require("../controllers/mobileController.js");
+Router.get("/mobile", mobileVersionController.get);
+
 module.exports = Router;
