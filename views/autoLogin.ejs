@@ -39,7 +39,11 @@
             const data = result.data.dataValues;
             if (data.profile) imageProfile.src = `/uploads/${data.profile}`;
             text.innerHTML = `${data.firstName} ${data.lastName} عزیز، خوش آمدید!`;
-            time.innerHTML = `ساعت شروع : ${result.data.startTime.minute} : ${result.data.startTime.hour}`;
+            if (data.isUserAlredyDuty) {
+              time.innerHTML = `ساعت شروع : ${result.data.startTime.minute} : ${result.data.startTime.hour}`;
+            } else {
+              time.innerHTML = `ورود شما ثبت شده است.`;
+            }
           }
         });
 

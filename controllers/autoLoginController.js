@@ -1,4 +1,5 @@
 const token = require("../helpers/token");
+const config = require("../configs/config.json");
 const axios = require("axios");
 
 const get = (req, res) => {
@@ -11,16 +12,17 @@ const get = (req, res) => {
 const post = async (req, res) => {
   if (token.auth(req.body.token, req.body.id)) {
     const loginUser = await axios.post(
-      "http://192.168.1.171:5050/?action=login",
+      `http://${config.app.ip}:${config.app.port}/?action=login`,
       { codePersoneli: req.body.id }
     );
+
     if (loginUser && loginUser.data.isDuty == false) {
-      res.send(loginUser.data);
+      res.send({ ...loginUser.data, userIsAlreadyDuty: false });
     } else {
-      res.send(false);
+      res.send({ ...loginUser.data, userIsAlreadyDuty: true });
     }
   } else {
-    res.send(false);
+    res.send(undefined);
   }
 };
 
