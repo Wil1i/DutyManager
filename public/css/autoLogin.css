@@ -1,3 +1,9 @@
+:root {
+  --main-color: #2f25e8;
+  --danger: #e3090f;
+  --success: rgb(78, 209, 78);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -6,6 +12,68 @@
 
 body {
   background-color: #ccc;
+}
+
+#askContainer-handler {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#askContainer {
+  background-color: white;
+  width: 450px;
+  border-radius: 10px;
+  padding: 15px;
+  height: 450px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+#askContainer > p {
+  text-align: center;
+  font-size: 20px;
+}
+
+#birthdayForm {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.primaryBtn {
+  background-color: rgb(216, 216, 248);
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+.primaryBtn:hover {
+  color: white;
+  background-color: var(--main-color);
+}
+
+#birthdayForm > input {
+  width: 70px;
+  text-align: center;
+  border-radius: 7px;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid var(--main-color);
+  outline: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#birthdayForm > input:focus {
+  background-color: var(--main-color);
+  color: white;
 }
 
 #container {

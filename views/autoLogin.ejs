@@ -9,6 +9,40 @@
     <link rel="stylesheet" href="/css/fonts.css" />
   </head>
   <body>
+    <div id="askContainer-handler">
+      <div id="askContainer">
+        <p>لطفا برای تکمیل اطلاعات خود، فرم زیر را تکمیل کنید.</p>
+        <div id="birthdayForm">
+          <input
+            min="1300"
+            max="1400"
+            required
+            type="number"
+            placeholder="سال"
+            class="birthday"
+          />
+          <input
+            class="birthday"
+            min="1"
+            max="12"
+            required
+            type="number"
+            placeholder="ماه"
+          />
+          <input
+            class="birthday"
+            min="1"
+            max="31"
+            required
+            type="number"
+            placeholder="روز"
+          />
+        </div>
+
+        <button class="primaryBtn" id="information-fm-submit">ثبت</button>
+      </div>
+    </div>
+
     <div id="container">
       <div id="box">
         <img id="prof" src="/uploads/profile.png" alt="" />
@@ -30,11 +64,13 @@
       var imageProfile = document.getElementById("prof");
       var text = document.getElementById("text");
       var time = document.getElementById("time");
+      var askContainerHandler = document.getElementById("askContainer-handler");
       var logout = document.getElementById("logout");
+      var btn = document.getElementById("information-fm-submit");
+      var birthdayInputs = document.querySelectorAll(".birthday");
       axios
         .post("/al", { id: "<%=id%>", token: "<%=token%>" })
         .then((result) => {
-          console.log(result);
           if (result) {
             const data = result.data.dataValues;
             if (data.profile) imageProfile.src = `/uploads/${data.profile}`;
@@ -44,8 +80,41 @@
             } else {
               time.innerHTML = `ورود شما ثبت شده است.`;
             }
+
+            if (data.birthday == "0/0/0")
+              askContainerHandler.style.display = "flex";
           }
         });
+
+      btn.addEventListener("click", () => {
+        let readyForRequest = true;
+        for (let i = 0; i < birthdayInputs.length; i++) {
+          if (birthdayInputs[i].value == "") {
+            birthdayInputs[i].style.backgroundColor = "var(--danger)";
+            birthdayInputs[i].style.border = "2px solid var(--danger)";
+            birthdayInputs[i].style.color = "white";
+            readyForRequest = false;
+          } else {
+            birthdayInputs[i].style.backgroundColor = "rgb(216, 216, 248)";
+            birthdayInputs[i].style.border = "2px solid var(--main-color)";
+            birthdayInputs[i].style.color = "var(--main-color)";
+          }
+        }
+
+        if (readyForRequest) {
+          axios
+            .post("/api/birthday", {
+              codePersoneli: location.href
+                .split("?")[1]
+                .split("&")[0]
+                .split("=")[1],
+              birthday: `${birthdayInputs[0].value}/${birthdayInputs[1].value}/${birthdayInputs[2].value}`,
+            })
+            .then(() => {
+              askContainerHandler.style.display = "none";
+            });
+        }
+      });
 
       logout.addEventListener("click", async () => {
         if (confirm("آیا مایل به ثبت پایان ساعت کاری هستید؟")) {
