@@ -55,6 +55,7 @@ body {
   top: 0;
   right: 0;
   font-size: 24px;
+  text-align: center;
 }
 
 .personeli__input::placeholder {
