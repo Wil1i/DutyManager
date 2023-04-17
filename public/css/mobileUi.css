@@ -1,0 +1,123 @@
+* {
+  background: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+body {
+  background: #1b54fe;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 3vw;
+}
+
+.apple-service {
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 2.25rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 30px #efefef35;
+}
+
+.apple-service span {
+  color: #1b54fe;
+  margin-left: 0.75rem;
+}
+
+.personeli {
+  width: 90vw;
+  height: 55px;
+  position: relative;
+  border-radius: 0.75rem;
+}
+
+.personeli__input {
+  color: #efefef;
+  border-bottom: 2px dashed #efefef;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 24px;
+}
+
+.personeli__input::placeholder {
+  color: #efefef;
+  opacity: 1;
+}
+
+.numbers {
+  direction: ltr;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* gap: 3vw; */
+}
+
+.numbers__num,
+#submit,
+#remove {
+  background: #efefef;
+  color: #1b54fe;
+  width: 29vw;
+  height: 75px;
+  margin: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+#submit {
+  background: #2eaf48;
+  color: #efefef;
+  font-size: 1.75rem;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#remove {
+  background: #dc3131;
+  color: #efefef;
+  font-size: 1.75rem;
+  font-weight: lighter;
+}
+
+.click-animate {
+  animation: click 250ms 1 ease;
+}
+
+@keyframes click {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
