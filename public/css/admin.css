@@ -1,162 +1,162 @@
-:root{
-    --main-color: #2f25e8;
-    --danger: #e3090f;
-    --success : rgb(78, 209, 78);
+:root {
+  --main-color: #2f25e8;
+  --danger: #e3090f;
+  --success: rgb(78, 209, 78);
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    font-weight: lighter !important;
+* {
+  padding: 0;
+  margin: 0;
+  font-weight: lighter !important;
 }
 
-body{
-    background-color: #ddd;
+body {
+  background-color: #ddd;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-#container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#containerBox{
-    background-color: white;
-    width: 95%;
-    height: 90%;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 1px rgb(194, 194, 194);
-    border: 2px solid var(--main-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#containerBox {
+  background-color: white;
+  width: 95%;
+  height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgb(194, 194, 194);
+  border: 2px solid var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-#containerBox > ul{
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+#containerBox > ul {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.userContainer{
-    width: 90%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 10px;
-    transition: background-color .15s ease-in-out;
-    cursor: pointer;
+.userContainer {
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
 }
 
-.userContainer > *{
-    width: 16%;
-    text-align: center;
+.userContainer > * {
+  width: 16%;
+  text-align: center;
 }
 
-.userContainer > p > img{
-    width: 40px;
+.userContainer > p > img {
+  width: 40px;
 }
 
-.userName{
-    font-weight: bold !important;
+.userName {
+  font-weight: bold !important;
 }
 
-.mainContainer{
-    /* box-shadow: 0 0 12px 1px #d4d4d4; */
-    border-bottom: 1px solid rgb(189, 189, 189);
-    padding: 10px;
-    padding-bottom: 15px;
-    width: 95%;
-    border-radius: 0;
-    margin: 20px 0;
+.mainContainer {
+  /* box-shadow: 0 0 12px 1px #d4d4d4; */
+  border-bottom: 1px solid rgb(189, 189, 189);
+  padding: 10px;
+  padding-bottom: 15px;
+  width: 95%;
+  border-radius: 0;
+  margin: 20px 0;
 }
 
-.mainContainer > *{
-    color: rgb(143, 143, 143);
-    font-weight: 200 !important;
+.mainContainer > * {
+  color: rgb(143, 143, 143);
+  font-weight: 200 !important;
 }
 
-.imageHandler{
-    width: 7%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.imageHandler {
+  width: 7%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#addUser{
-    position: fixed;
-    font-size: 30px;
-    background-color: rgb(61, 209, 61);
-    color: white;
-    border-radius: 50%;
-    padding: 5px 20px;
-    text-decoration: none;
-    bottom: 10px;
-    left: 10px;
+#addUser {
+  position: fixed;
+  font-size: 30px;
+  background-color: rgb(61, 209, 61);
+  color: white;
+  border-radius: 50%;
+  padding: 5px 20px;
+  text-decoration: none;
+  bottom: 10px;
+  left: 10px;
 }
 
-.hover:hover{
-    background-color: #f1f1f1;
+.hover:hover {
+  background-color: #f1f1f1;
 }
 
-.offline{
-    outline : 2px solid var(--danger);
+.offline {
+  outline: 2px solid var(--danger);
 }
 
-.online{
-    outline : 2px solid var(--success);
+.online {
+  outline: 2px solid var(--success);
 }
 
-#searchBox{
-    border:none;
-    font-size: 16px;
-    outline: none;
-    border-radius: 5px;
-    transition: outline .1s ease-in-out;
-    outline-offset: 3px;
+#searchBox {
+  border: none;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  transition: outline 0.1s ease-in-out;
+  outline-offset: 3px;
 }
 
-#searchBox:hover{
-    outline: 2px solid gray;
+#searchBox:hover {
+  outline: 2px solid gray;
 }
 
-#searchBox:focus{
-    outline: 2px solid gray;
+#searchBox:focus {
+  outline: 2px solid gray;
 }
 
-.imageProfile{
-    border-radius : 50%;
-    outline-offset: 4px;
+.imageProfile {
+  border-radius: 50%;
+  outline-offset: 4px;
 }
 
-#usersHandlerUL{
-    overflow-y: scroll;
+#usersHandlerUL {
+  overflow-y: scroll;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--main-color);
+  border-radius: 10px;
+  background: var(--main-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: darkblue;
+  background: darkblue;
 }

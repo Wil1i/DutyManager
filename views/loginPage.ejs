@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl" id="s">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>سرویس مدیریت همکاران - اپل سرویس</title>
-    <link rel="stylesheet" href="/css/loginPageStyle.css">
-    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/loginPageStyle.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
   </head>
   <body>
-    <% for(const key in flash){ %>               
-      <span role="alert" class="flash">
-        <%= flash[key] %>
-      </span>
+    <% for(const key in flash){ %>
+    <span role="alert" class="flash"> <%= flash[key] %> </span>
     <% } %>
     <div id="passwordBoxHandler">
-
       <div id="passwordBox">
-          <h1 id="passwordAlert">خوش آمدید!</h1>
-          <p>لطفا رمز عبور را جهت باز کردن قفل برنامه وارد نمایید.</p>
-          <div>
-            <input required type="password" id="firstTimePassword" dir="ltr">
-            <button id="submitPassword">ورود</button>
-          </div>
+        <h1 id="passwordAlert">خوش آمدید!</h1>
+        <p>لطفا رمز عبور را جهت باز کردن قفل برنامه وارد نمایید.</p>
+        <div>
+          <input required type="password" id="firstTimePassword" dir="ltr" />
+          <button id="submitPassword">ورود</button>
+        </div>
       </div>
-
     </div>
-
 
     <div id="passwordContainer"></div>
 
     <div class="container">
-
       <div class="innerContainer">
-
         <h1 id="loginH">ورود</h1>
         <p id="nameP">اپل سرویس</p>
         <div class="centerHandler" id="loginForm">
-          <input disabled id="codePersoneli" type="number" name="code" autocomplete="off" required placeholder="...کد پرسنلی خود  را وارد کنید">
+          <input
+            disabled
+            id="codePersoneli"
+            type="number"
+            name="code"
+            autocomplete="off"
+            required
+            placeholder="...کد پرسنلی خود  را وارد کنید"
+          />
           <div class="btnHandler">
             <button type="submit" name="login" id="loginButton">ورود</button>
             <button type="submit" name="logout" id="logoutButton">خروج</button>
           </div>
         </div>
-
       </div>
-
-
     </div>
 
     <!-- <p id="customText">عید نوروز مبارک</p> -->
@@ -53,6 +51,5 @@
 
     <script src="/js/axios.min.js"></script>
     <script src="/js/loginPageScript.js" defer></script>
-
   </body>
 </html>

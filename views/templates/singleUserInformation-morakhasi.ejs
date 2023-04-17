@@ -1,163 +1,218 @@
 <style>
-    :root{
-        --main-color: #2f25e8;
-        --danger: #e3090f;
-    }
+  :root {
+    --main-color: #2f25e8;
+    --danger: #e3090f;
+  }
 
-    input{
-        direction: rtl;
-        padding: 5px 10px;
-        border-radius: 6px;
-        border: 1px solid var(--main-color);
-        outline: none;
-        font-weight: lighter;
-        margin: 5px;
-    }
+  input {
+    direction: rtl;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--main-color);
+    outline: none;
+    font-weight: lighter;
+    margin: 5px;
+  }
 
-    #mainContainerMorakhasi{
-        background-color: white;
-        width: 500px;
-        height: 300px;
-        border-radius: 10px;
-        border: 2px solid var(--main-color);
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
+  #mainContainerMorakhasi {
+    background-color: white;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    border: 2px solid var(--main-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 
-    #mainContainerMorakhasi > h1{
-        text-align: center;
-        color: var(--main-color);
-        border-bottom: 1px solid #ddd;
-        padding: 10px 0;
-        width: 80%;
-    }
+  #mainContainerMorakhasi > h1 {
+    text-align: center;
+    color: var(--main-color);
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    width: 80%;
+  }
 
-    #inputBoxMorakhasi{
-        width: 90%;
-        margin-top: 20px;
-        height: 90vh;
-    }
+  #inputBoxMorakhasi {
+    width: 90%;
+    margin-top: 20px;
+    height: 90vh;
+  }
 
-    .column{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
+  .column {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 
-    .size10{
-        width: 99%;
-    }
+  .size10 {
+    width: 99%;
+  }
 
-    .size9{
-        width: 89%;
-    }
+  .size9 {
+    width: 89%;
+  }
 
-    .size8{
-        width: 79%;
-    }
+  .size8 {
+    width: 79%;
+  }
 
-    .size7{
-        width: 69%;
-    }
+  .size7 {
+    width: 69%;
+  }
 
-    .size6{
-        width: 59%;
-    }
+  .size6 {
+    width: 59%;
+  }
 
-    .size5{
-        width: 49%;
-    }
+  .size5 {
+    width: 49%;
+  }
 
-    .size4{
-        width: 39%;
-    }
+  .size4 {
+    width: 39%;
+  }
 
-    .size3{
-        width: 29%;
-    }
+  .size3 {
+    width: 29%;
+  }
 
-    .size2{
-        width: 19%;
-    }
+  .size2 {
+    width: 19%;
+  }
 
-    .size1{
-        width: 9%;
-    }
+  .size1 {
+    width: 9%;
+  }
 
-    .c{
-        text-align: center;
-    }
+  .c {
+    text-align: center;
+  }
 
-    .inputBoxHandler{
-        height: 20%;
-    }
+  .inputBoxHandler {
+    height: 20%;
+  }
 
-    button{
-        padding: 7px 0;
-        border: 1px solid var(--main-color);
-        border-radius: 10px;
-        width: 100%;
-        color: white;
-        background-color: var(--main-color);
-        transition: background-color .3s ease-in-out, color .3s ease-in-out;
-    }
+  button {
+    padding: 7px 0;
+    border: 1px solid var(--main-color);
+    border-radius: 10px;
+    width: 100%;
+    color: white;
+    background-color: var(--main-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
 
-    button:hover{
-        background-color: transparent;
-        color: var(--main-color);
-    }
+  button:hover {
+    background-color: transparent;
+    color: var(--main-color);
+  }
 
-    #containerHandlerMorakhasi{
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, .3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  #containerHandlerMorakhasi {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .morakhasi-handler{
-        float: right;
-        display: flex; 
-        justify-content: center; 
-        align-items: center;
-        flex-direction: column
-    }
+  .morakhasi-handler {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 </style>
-    
-<div id="containerHandlerMorakhasi" style="display: none;">
 
-<div id="mainContainerMorakhasi">
+<div id="containerHandlerMorakhasi" style="display: none">
+  <div id="mainContainerMorakhasi">
     <p id="closeMorakhasi" class="close">X</p>
     <h1>ثبت مرخصی</h1>
 
-    <form id="inputBoxMorakhasi" action="/admin/<%=userInfo.codePersoneli%>?action=morakhasi" method="post">
-        <div class="inputBoxHandler" style="display: flex; justify-content: center; align-items: flex-start;">
+    <form
+      id="inputBoxMorakhasi"
+      action="/admin/<%=userInfo.codePersoneli%>?action=morakhasi"
+      method="post"
+    >
+      <div
+        class="inputBoxHandler"
+        style="display: flex; justify-content: center; align-items: flex-start"
+      >
+        <div class="morakhasi-handler">
+          <p>تاریخ شروع</p>
+          <div>
+            <input
+              required
+              id="morakhasi-year"
+              name="year"
+              type="text"
+              style="text-align: center; width: 50px"
+              value="<%=d.year%>"
+            />
+            <input
+              required
+              id="morakhasi-month"
+              name="month"
+              type="text"
+              style="text-align: center; width: 50px"
+              value="<%=d.month%>"
+            />
+            <input
+              required
+              id="morakhasi-day"
+              name="day"
+              type="text"
+              style="text-align: center; width: 50px"
+              value="<%=d.day%>"
+            />
 
-            <div class="morakhasi-handler">
-                <p>تاریخ شروع</p>
-                <div>
-                    <input required id="morakhasi-year" name="year" type="text" style="text-align: center;width: 50px" value="<%=d.year%>">
-                    <input required id="morakhasi-month" name="month" type="text" style="text-align: center;width: 50px" value="<%=d.month%>">
-                    <input required id="morakhasi-day" name="day" type="text" style="text-align: center;width: 50px" value="<%=d.day%>">
+            <p style="text-align: center; margin-top: 10px; margin-bottom: 5px">
+              تاریخ پایان
+            </p>
 
-                    <p style="text-align: center;margin-top: 10px;margin-bottom: 5px;">تاریخ پایان</p>
-
-                    <div style="color:gray;display : flex; justify-content: space-around; margin-left: -10px">
-                        <input required id="morakhasi-year2" name="year2" type="text" style="text-align: center;width: 50px" value="<%=d.year%>">
-                        <input required id="morakhasi-month2" name="month2" type="text" style="text-align: center;width: 50px" value="<%=d.month%>">
-                        <input required id="morakhasi-day2" name="day2" type="text" style="text-align: center;width: 50px" value="<%=Number(d.day) + 1%>">
-                    </div>
-                </div>
+            <div
+              style="
+                color: gray;
+                display: flex;
+                justify-content: space-around;
+                margin-left: -10px;
+              "
+            >
+              <input
+                required
+                id="morakhasi-year2"
+                name="year2"
+                type="text"
+                style="text-align: center; width: 50px"
+                value="<%=d.year%>"
+              />
+              <input
+                required
+                id="morakhasi-month2"
+                name="month2"
+                type="text"
+                style="text-align: center; width: 50px"
+                value="<%=d.month%>"
+              />
+              <input
+                required
+                id="morakhasi-day2"
+                name="day2"
+                type="text"
+                style="text-align: center; width: 50px"
+                value="<%=Number(d.day) + 1%>"
+              />
             </div>
-
+          </div>
         </div>
+      </div>
 
-        <button type="submit" id="submitButton">ثبت</button>
+      <button type="submit" id="submitButton">ثبت</button>
     </form>
-</div>
+  </div>
 </div>

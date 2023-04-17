@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="300">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="300" />
     <title>پنل مدیریتی - اپل سرویس</title>
-    <link rel="stylesheet" href="/css/admin.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-</head>
-<body>
-    
-    <% for(const key in flash){ %>               
-        <span role="alert" class="flash">
-          <%= flash[key] %>
-        </span>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+  <body>
+    <% for(const key in flash){ %>
+    <span role="alert" class="flash"> <%= flash[key] %> </span>
     <% } %>
 
     <a href="/admin/new" id="addUser">+</a>
 
     <div id="container">
-        <div id="containerBox">
-            <li class="userContainer mainContainer">
-                <p class="imageHandler"></p>
+      <div id="containerBox">
+        <li class="userContainer mainContainer">
+          <p class="imageHandler"></p>
 
-                <input placeholder="نام و نام خانوادگی" id="searchBox">
+          <input placeholder="نام و نام خانوادگی" id="searchBox" />
 
-                <p>کد پرسنلی</p>
+          <p>کد پرسنلی</p>
 
-                <p>مقام</p>
+          <p>مقام</p>
 
-                <p id="dutyHoursFilter">ساعت کاری</p>
-                
-                <p>تاریخ تولد</p>
-            </li>
+          <p id="dutyHoursFilter">ساعت کاری</p>
 
-            <ul id="usersHandlerUL">
-                
+          <p>تاریخ تولد</p>
+        </li>
 
-                <% users.forEach((u) => { %>
-                    <%- include("templates/admin-userInfo.ejs", {u, duties}) %>
-                <% }) %>
-                
-            </ul>
-        </div>
+        <ul id="usersHandlerUL">
+          <% users.forEach((u) => { %> <%-
+          include("templates/admin-userInfo.ejs", {u, duties}) %> <% }) %>
+        </ul>
+      </div>
     </div>
 
     <script src="/js/adminPageScripts.js" defer></script>
-</body>
+  </body>
 </html>

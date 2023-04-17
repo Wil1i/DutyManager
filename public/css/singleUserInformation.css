@@ -1,183 +1,182 @@
-:root{
-    --main-color: #2f25e8;
-    --danger: #e3090f;
-    --success : rgb(78, 209, 78);
+:root {
+  --main-color: #2f25e8;
+  --danger: #e3090f;
+  --success: rgb(78, 209, 78);
 }
 
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    padding: 30px;
-    background-color: #ddd;
+body {
+  padding: 30px;
+  background-color: #ddd;
 }
 
-.imageHandler{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
+.imageHandler {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
 }
 
-.imageHandler > img{
-    width: 100%;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 0 6px 1px rgb(236, 236, 236);
+.imageHandler > img {
+  width: 100%;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 1px rgb(236, 236, 236);
 }
 
-.rightInformation{
-    background-color: white;
-    float: right;
-    width: 23%;
-    max-width: 300px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 1px rgb(204, 204, 204);
+.rightInformation {
+  background-color: white;
+  float: right;
+  width: 23%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgb(204, 204, 204);
 }
 
-.listItems{
-    margin-bottom : 15px
+.listItems {
+  margin-bottom: 15px;
 }
 
-.topInfo{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100px;   
+.topInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100px;
 }
 
-.infoHandler{
-    margin-right: 10px;
+.infoHandler {
+  margin-right: 10px;
 }
 
-.infoHandler > p{
-    text-align: right;
+.infoHandler > p {
+  text-align: right;
 }
 
-.infoHandler > p:first-child{
-    font-size: 17px;
+.infoHandler > p:first-child {
+  font-size: 17px;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-li{
-    text-align: right;
-    padding: 10px;
-    transition: background-color .2s ease-in-out;
-    user-select: none;
-    border-radius: 10px;
+li {
+  text-align: right;
+  padding: 10px;
+  transition: background-color 0.2s ease-in-out;
+  user-select: none;
+  border-radius: 10px;
 }
 
-.listItems > li:hover{
-    background-color: #f0f0f0;
+.listItems > li:hover {
+  background-color: #f0f0f0;
 }
 
-.listItems > li > p{
-    color: rgb(82, 82, 82);
-    font-weight: 100;
-    float: left;
+.listItems > li > p {
+  color: rgb(82, 82, 82);
+  font-weight: 100;
+  float: left;
 }
 
-.deleteUser{
-    background-color: rgb(255, 217, 217);
-    border: 1px solid rgb(182, 26, 26);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    text-decoration: none;
-    color: rgb(182, 26, 26);
-    padding: 10px 0;
-    border-radius: 7px;
-    user-select: none;
-    font-size: 11px !important;
+.deleteUser {
+  background-color: rgb(255, 217, 217);
+  border: 1px solid rgb(182, 26, 26);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  color: rgb(182, 26, 26);
+  padding: 10px 0;
+  border-radius: 7px;
+  user-select: none;
+  font-size: 11px !important;
 }
 
-.primaryBtn{
-    background-color: rgb(216, 216, 248);
-    color: var(--main-color);
-    border: 1px solid var(--main-color);
+.primaryBtn {
+  background-color: rgb(216, 216, 248);
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 
-#dutyInformations{
-    background-color: white;
-    float: left;
-    width: 73%;
-    height: 83vh;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 1px rgb(204, 204, 204);
-    border: 2px solid var(--main-color);
+#dutyInformations {
+  background-color: white;
+  float: left;
+  width: 73%;
+  height: 83vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgb(204, 204, 204);
+  border: 2px solid var(--main-color);
 }
 
 #dutyInformations > ul {
-    background-color: #eeeeee;
-    border-radius: 10px;
-    margin: 10px;
-    height: 80%;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  margin: 10px;
+  height: 80%;
 }
 
-#dutyInformations > div{
-    height: 16%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#dutyInformations > div {
+  height: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#dutyInformations > div > h1{
-    text-align: center;
-    color: var(--main-color);
+#dutyInformations > div > h1 {
+  text-align: center;
+  color: var(--main-color);
 }
 
-.dutyInformationsHandler > li{
-    width: 95%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+.dutyInformationsHandler > li {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.dutyInformationsHandler{
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
+.dutyInformationsHandler {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: var(--main-color);
+  border-radius: 10px;
+  background: var(--main-color);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: darkblue;
+  background: darkblue;
 }
 
-.alignCenter{
-    justify-content: center;
-    user-select: none;
+.alignCenter {
+  justify-content: center;
+  user-select: none;
 }
 
-.close{
-    width: 100%;
-    text-align: right; 
-    padding-right: 20px; 
-    padding-top: 10px;
-    margin-bottom: -40px; 
-    user-select: none;
-    cursor: pointer;
+.close {
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  padding-top: 10px;
+  margin-bottom: -40px;
+  user-select: none;
+  cursor: pointer;
 }

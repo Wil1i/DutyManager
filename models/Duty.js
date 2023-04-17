@@ -1,28 +1,30 @@
-const { DataTypes } = require('sequelize');
-const db = require("../configs/db")
+const { DataTypes } = require("sequelize");
+const db = require("../configs/db");
 
-const Duty = db.define('duty', {
-
-    id : {
-        type : DataTypes.INTEGER,
-        primaryKey : true,
-        autoIncrement : true
+const Duty = db.define(
+  "duty",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
 
-    codePersoneli : {
-        type : DataTypes.TEXT,
+    codePersoneli: {
+      type: DataTypes.TEXT,
     },
 
-    startTime : {
-        type : DataTypes.TEXT
+    startTime: {
+      type: DataTypes.TEXT,
     },
 
-    infoID : {
-        type : DataTypes.NUMBER
-    }
+    infoID: {
+      type: DataTypes.NUMBER,
+    },
+  },
+  {
+    timestamps: false,
+  }
+);
 
-}, {
-    timestamps : false
-})
-
-module.exports = Duty
+module.exports = Duty;

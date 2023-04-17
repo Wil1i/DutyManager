@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/autoLogin.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/autoLogin.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+  </head>
+  <body>
     <div id="container">
-        <div id="box">
-            <img id="prof" src="/uploads/profile.png" alt="">
-            <div>
-                <h1 id="text">در حال ورود ...</h1>
-                <p style="text-align : center; color: gray; margin-top: 20px;" id="time">ساعت شروع : -</p>
-            </div>
-            <button id="logout">خروج</button>
+      <div id="box">
+        <img id="prof" src="/uploads/profile.png" alt="" />
+        <div>
+          <h1 id="text">در حال ورود ...</h1>
+          <p
+            style="text-align: center; color: gray; margin-top: 20px"
+            id="time"
+          >
+            ساعت شروع : -
+          </p>
         </div>
+        <button id="logout">خروج</button>
+      </div>
     </div>
 
     <script src="/js/axios.min.js"></script>
     <script>
-        var imageProfile = document.getElementById("prof")
-        var text = document.getElementById("text")
-        var time = document.getElementById("time")
-        var logout = document.getElementById("logout")
-        axios.post('/al', {id : "<%=id%>", token : '<%=token%>'}).then((result) => {
-            console.log(result)
-            if(result){
-                const data = result.data.dataValues
-                if(data.profile) imageProfile.src = `/uploads/${data.profile}`
-                text.innerHTML = `${data.firstName} ${data.lastName} عزیز، خوش آمدید!`
-                time.innerHTML = `ساعت شروع : ${result.data.startTime.minute} : ${result.data.startTime.hour}`
-            }
-        })
+      var imageProfile = document.getElementById("prof");
+      var text = document.getElementById("text");
+      var time = document.getElementById("time");
+      var logout = document.getElementById("logout");
+      axios
+        .post("/al", { id: "<%=id%>", token: "<%=token%>" })
+        .then((result) => {
+          console.log(result);
+          if (result) {
+            const data = result.data.dataValues;
+            if (data.profile) imageProfile.src = `/uploads/${data.profile}`;
+            text.innerHTML = `${data.firstName} ${data.lastName} عزیز، خوش آمدید!`;
+            time.innerHTML = `ساعت شروع : ${result.data.startTime.minute} : ${result.data.startTime.hour}`;
+          }
+        });
 
-        logout.addEventListener("click", async () => {
-            if(confirm("آیا مایل به ثبت پایان ساعت کاری هستید؟")){
-                await axios.post("/?action=logout", {codePersoneli : "<%=id%>"}).then(() => {
-                    logout.style.display = "none"
-                    time.style.display = "none"
-                    text.innerHTML = "با موفقیت خارج شدید"
-                })
-            }
-        })
+      logout.addEventListener("click", async () => {
+        if (confirm("آیا مایل به ثبت پایان ساعت کاری هستید؟")) {
+          await axios
+            .post("/?action=logout", { codePersoneli: "<%=id%>" })
+            .then(() => {
+              logout.style.display = "none";
+              time.style.display = "none";
+              text.innerHTML = "با موفقیت خارج شدید";
+            });
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

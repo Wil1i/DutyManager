@@ -1,31 +1,31 @@
-:root{
+:root {
   --main-color: #2f25e8;
   --danger: #e3090f;
 }
 
-*{
+* {
   padding-left: 0;
   margin: 0;
-  transition: color .1s ease-in-out;
+  transition: color 0.1s ease-in-out;
 }
 
-body{
+body {
   background-color: #ccc;
 }
 
-#loginH{
+#loginH {
   font-size: 80px;
   color: var(--main-color);
   text-align: center;
 }
 
-#nameP{
+#nameP {
   text-align: center;
   margin-top: -20px;
   font-size: 14px;
 }
 
-#codePersoneli{
+#codePersoneli {
   margin: 10vh;
   padding: 10px;
   border-radius: 10px;
@@ -34,22 +34,22 @@ body{
   width: 90%;
   text-align: center;
   outline: none;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   color: var(--main-color);
   direction: ltr;
 }
 
-#codePersoneli::placeholder{
+#codePersoneli::placeholder {
   color: var(--main-color);
 }
 
-.codePersoneliFocus{
+.codePersoneliFocus {
   background-color: var(--main-color);
   color: white !important;
   /* letter-spacing: 5px; */
 }
 
-.centerHandler{
+.centerHandler {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,7 @@ body{
   width: 100%;
 }
 
-.container{
+.container {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -66,7 +66,7 @@ body{
   flex-direction: column;
 }
 
-.innerContainer{
+.innerContainer {
   background-color: white;
   padding: 50px;
   border-top-left-radius: 50px;
@@ -75,7 +75,7 @@ body{
   border: 2px solid var(--main-color);
 }
 
-#loginButton{
+#loginButton {
   width: 100px;
   height: 40px;
   border: 1px solid var(--main-color);
@@ -84,16 +84,16 @@ body{
   color: white;
   letter-spacing: 1px;
   padding-left: 2px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   font-weight: lighter;
 }
 
-#loginButton:hover{
+#loginButton:hover {
   background-color: transparent;
   color: var(--main-color);
 }
 
-#logoutButton{
+#logoutButton {
   width: 100px;
   height: 40px;
   border: 1px solid var(--danger);
@@ -102,17 +102,17 @@ body{
   color: var(--danger);
   letter-spacing: 1px;
   padding-left: 2px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   font-weight: lighter;
   float: left;
 }
 
-#logoutButton:hover{
+#logoutButton:hover {
   background-color: var(--danger);
   color: white;
 }
 
-#customText{
+#customText {
   position: fixed;
   bottom: 20px;
   left: 5px;
@@ -120,11 +120,11 @@ body{
   transform: rotateZ(25deg);
 }
 
-.btnHandler{
+.btnHandler {
   width: 97%;
 }
 
-button{
+button {
   cursor: pointer;
   outline: none;
 }
@@ -136,16 +136,16 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-#nameP{
-  transition: opacity .1s ease-in-out, color .1s ease-in-out;
+#nameP {
+  transition: opacity 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-#passwordContainer{
+#passwordContainer {
   opacity: 0.3;
   background-color: black;
   width: 100%;
@@ -155,7 +155,7 @@ input[type=number] {
   transition: opacity 0.3s ease-in-out;
 }
 
-#passwordBox{
+#passwordBox {
   background-color: white;
   float: right;
   padding: 20px;
@@ -163,15 +163,15 @@ input[type=number] {
   box-shadow: 0 0 10px 1px rgb(161, 161, 161);
 }
 
-#passwordBox > *{
+#passwordBox > * {
   text-align: center;
 }
 
-#passwordBox > *:not(:last-child){
+#passwordBox > *:not(:last-child) {
   margin-bottom: 20px;
 }
 
-#firstTimePassword{
+#firstTimePassword {
   border: 0.15rem solid var(--main-color);
   border-radius: 7px;
   padding: 3px 10px;
@@ -180,7 +180,7 @@ input[type=number] {
   letter-spacing: 10px;
 }
 
-#submitPassword{
+#submitPassword {
   padding: 3px 10px;
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
@@ -190,7 +190,7 @@ input[type=number] {
   letter-spacing: 1px;
 }
 
-#passwordBoxHandler{
+#passwordBoxHandler {
   position: fixed;
   top: 0;
   width: 100%;
@@ -199,18 +199,18 @@ input[type=number] {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-#passwordAlert{
+#passwordAlert {
   transition: opacity 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
-#profilePicture{
-  transition: .2s opacity ease-in-out;
+#profilePicture {
+  transition: 0.2s opacity ease-in-out;
   display: none;
   opacity: 0;
   width: 50px;
   margin-bottom: -25px;
-  border-radius : 50%
+  border-radius: 50%;
 }

@@ -1,19 +1,22 @@
 <li class="userContainer hover onFilter" id="<%=u.codePersoneli%>">
-    <p class="imageHandler">
-        <img 
-        <% if(duties.find(d => d.codePersoneli == u.codePersoneli)){ %>
-        title="حضور از ساعت <%= duties.find(d => d.codePersoneli == u.codePersoneli).startTime %>" 
-        <% } %>
-        src="/uploads/<%= (u.profile && u.profile != "") ? u.profile : "profile.png" %>" class="imageProfile <%= dutyList.includes(u.codePersoneli) ? "online" : "offline" %>">
-    </p>
+  <p class="imageHandler">
+    <img <% if(duties.find(d => d.codePersoneli == u.codePersoneli)){ %>
+    title="حضور از ساعت <%= duties.find(d => d.codePersoneli ==
+    u.codePersoneli).startTime %>" <% } %> src="/uploads/<%= (u.profile &&
+    u.profile != "") ? u.profile : "profile.png" %>" class="imageProfile <%=
+    dutyList.includes(u.codePersoneli) ? "online" : "offline" %>">
+  </p>
 
-    <p class="userName"><%= u.firstName %> <%= u.lastName %></p>
+  <p class="userName"><%= u.firstName %> <%= u.lastName %></p>
 
-    <p><%= u.codePersoneli %></p>
+  <p><%= u.codePersoneli %></p>
 
-    <p><%= (u.userRank) ? u.userRank : "تایین نشده" %></p>
+  <p><%= (u.userRank) ? u.userRank : "تایین نشده" %></p>
 
-    <p><%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %> : <%= (u.dutyMinutes < 10) ? `0${u.dutyMinutes}` : u.dutyMinutes %></p>
-    
-    <p><%= u.birthday %></p>
+  <p>
+    <%= (u.dutyHours < 10) ? `0${u.dutyHours}` : u.dutyHours %> : <%=
+    (u.dutyMinutes < 10) ? `0${u.dutyMinutes}` : u.dutyMinutes %>
+  </p>
+
+  <p><%= u.birthday %></p>
 </li>
