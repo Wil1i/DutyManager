@@ -74,11 +74,9 @@ const post = async (req, res) => {
     });
 
     if (todayDuty) {
-      console.log(1);
       let offDutyTime = await axios.get(
         "https://prayer.aviny.com/api/prayertimes/1"
       );
-      console.log(2);
 
       // const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
       // const pDate2 = offDutyTime.data.time24.full.en.split(":")
