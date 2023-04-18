@@ -1,5 +1,5 @@
 const get = (req, res) => {
-  res.render("mobileUi");
+  res.render("mobileUI");
 };
 
 module.exports = {
