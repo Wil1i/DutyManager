@@ -102,6 +102,7 @@ li {
   background-color: rgb(216, 216, 248);
   color: var(--main-color);
   border: 1px solid var(--main-color);
+  margin-bottom: 10px;
 }
 
 #dutyInformations {
