@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/fonts.css" />
   </head>
   <body>
-    <div class="apple-service">
+    <div class="apple-service active-alert show-alert">
       <span>اپل سرویس</span>
       <svg
         width="22"
@@ -23,6 +23,58 @@
           clip-rule="evenodd"
           d="M14.4637 3.99113C15.3751 2.93488 15.9894 1.46374 15.8213 0C14.508 0.0500005 12.9191 0.838941 11.9774 1.89394C11.1318 2.83018 10.3936 4.32616 10.5921 5.76116C12.0571 5.8699 13.5524 5.04861 14.4637 3.99113ZM17.7489 13.2814C17.7856 17.0651 21.2123 18.3238 21.2502 18.34C21.2224 18.4288 20.7029 20.1335 19.4452 21.896C18.3569 23.4185 17.2281 24.9348 15.4497 24.9673C13.7028 24.9985 13.1403 23.9748 11.1419 23.9748C9.1448 23.9748 8.52038 24.9346 6.86706 24.9984C5.15054 25.0597 3.84229 23.3512 2.7464 21.8337C0.504048 18.73 -1.20868 13.0627 1.09181 9.23776C2.23448 7.33901 4.27584 6.13479 6.49291 6.10479C8.17783 6.07354 9.76922 7.19123 10.7994 7.19123C11.8296 7.19123 13.7635 5.84748 15.796 6.04498C16.6467 6.07873 19.0357 6.37363 20.5689 8.52486C20.445 8.59861 17.7186 10.1189 17.7489 13.2814Z"
           fill="#1B54FE"
+        />
+      </svg>
+    </div>
+
+    <div class="success-login">
+      <span>با موفقیت وارد شدید</span>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          opacity="0.4"
+          cx="12"
+          cy="12"
+          r="10"
+          transform="rotate(180 12 12)"
+          fill="#efefef"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M22.5018 2.44254C22.8096 2.71963 22.8346 3.19385 22.5575 3.50173L13.8199 13.0991C12.8454 14.1819 11.1955 14.3168 10.0579 13.4068L6.53151 10.5857C6.20806 10.3269 6.15562 9.85493 6.41438 9.53149C6.67313 9.20804 7.1451 9.1556 7.46855 9.41436L10.995 12.2355C11.512 12.6492 12.262 12.5878 12.705 12.0956L21.4426 2.49828C21.7197 2.1904 22.1939 2.16544 22.5018 2.44254Z"
+          fill="#efefef"
+        />
+      </svg>
+    </div>
+
+    <div class="success-logout">
+      <span>با موفقیت خارج شدید</span>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          opacity="0.4"
+          cx="12"
+          cy="12"
+          r="10"
+          transform="rotate(180 12 12)"
+          fill="#efefef"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M22.5018 2.44254C22.8096 2.71963 22.8346 3.19385 22.5575 3.50173L13.8199 13.0991C12.8454 14.1819 11.1955 14.3168 10.0579 13.4068L6.53151 10.5857C6.20806 10.3269 6.15562 9.85493 6.41438 9.53149C6.67313 9.20804 7.1451 9.1556 7.46855 9.41436L10.995 12.2355C11.512 12.6492 12.262 12.5878 12.705 12.0956L21.4426 2.49828C21.7197 2.1904 22.1939 2.16544 22.5018 2.44254Z"
+          fill="#efefef"
         />
       </svg>
     </div>
@@ -123,9 +175,18 @@
           .post("/api/duty/change", { codePersoneli: input.value })
           .then((isUserDuty) => {
             if (isUserDuty.data == true) {
-              axios.post("/?action=logout", { codePersoneli: input.value });
+              axios
+                .post("/?action=logout", { codePersoneli: input.value })
+                .then((response) => {
+                  console.log(response);
+                });
             } else {
-              axios.post("/?action=login", { codePersoneli: input.value });
+              axios
+                .post("/?action=login", { codePersoneli: input.value })
+                .then((response) => {
+                  console.log(response.data.firstName);
+                  console.log(response.data.lastName);
+                });
             }
 
             input.value = "";

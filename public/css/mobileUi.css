@@ -24,9 +24,11 @@ body {
   padding: 2rem 0 3vw;
 }
 
-.apple-service {
+.apple-service,
+.success-login,
+.success-logout {
   background: #efefef;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding: 0.75rem 2.25rem;
@@ -34,9 +36,49 @@ body {
   box-shadow: 0 10px 30px #efefef35;
 }
 
+.success-login {
+  background: #2eaf48;
+  box-shadow: 0 10px 30px #2eaf4835;
+}
+
+.success-logout {
+  background: #dc3131;
+  box-shadow: 0 10px 30px #dc313135;
+}
+
 .apple-service span {
   color: #1b54fe;
   margin-left: 0.75rem;
+}
+
+.success-login span,
+.success-logout span {
+  color: #efefef;
+  margin-left: 0.75rem;
+}
+
+.active-alert {
+  display: flex;
+}
+
+.show-alert {
+  animation: showAlert 450ms 1 ease;
+}
+
+@keyframes showAlert {
+  0% {
+    opacity: 0;
+    transform: scale(0, 0.5);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.15, 1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .personeli {
