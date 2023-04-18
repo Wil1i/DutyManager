@@ -1,4 +1,4 @@
-sconst express = require("express");
+const express = require("express");
 const config = require("./configs/config.json");
 const bodyParser = require("body-parser");
 const flash = require("connect-flash");
