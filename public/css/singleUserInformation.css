@@ -181,3 +181,19 @@ li {
   user-select: none;
   cursor: pointer;
 }
+
+#tokenBtnHandler {
+  float: left;
+  margin-top: -5px;
+  overflow-wrap: anywhere;
+  user-select: all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tokenBtn {
+  float: left;
+  width: 100px;
+  margin-left: -10px;
+}

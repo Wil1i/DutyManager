@@ -88,13 +88,22 @@
         <% } %>
         <li>
             توکن
-            <p style="overflow-wrap: anywhere;user-select: all;"><%if(userInfo.token){ %>
-                <%=userInfo.token%>
+
+            <div id="tokenBtnHandler">
+
+            <%if(userInfo.token){ %>
+
+                <button id="copyToken" class="primaryBtn tokenBtn" dir="rtl">کپی توکن</button>
+
             <% }else{ %>
+
                 <form action="/admin/<%=userInfo.codePersoneli%>?action=token" style="float: left;" method="post">
-                    <button class="primaryBtn" style="width: 100px">ساخت</button>
+                    <button class="primaryBtn tokenBtn">ساخت</button>
                 </form>
-            <% }%></p>
+
+            <% }%>
+
+        </div>
         </li>
     </ul>
 
@@ -113,3 +122,15 @@
     <button id="deleteUser" class="deleteUser db" style="margin-top: 3px">حذف کاربر</button>
 
 </div>
+
+<script>
+    var copyTokenBtn = document.getElementById("copyToken");
+
+    copyTokenBtn.addEventListener("click", () => {
+        window.navigator.clipboard.writeText("<%=userInfo.token%>")
+        copyTokenBtn.innerHTML = "کپی شد!"
+        setTimeout(() => {
+            copyTokenBtn.innerHTML = "کپی توکن"
+        }, 2500);
+    })
+</script>
