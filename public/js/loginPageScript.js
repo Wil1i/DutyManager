@@ -38,6 +38,19 @@ loginButton.addEventListener("click", async () => {
     });
 
     if (
+      loginRequest.data.err &&
+      loginRequest.data.err == "internet connection"
+    ) {
+      return showAlert(
+        headerText,
+        "اینترنت خود را چک کنید!",
+        "اپل سرویس",
+        "red",
+        "black"
+      );
+    }
+
+    if (
       loginRequest.data == undefined ||
       !loginRequest.data ||
       loginRequest.data == "undefined"
@@ -148,19 +161,6 @@ passwordSubmitButton.addEventListener("click", async () => {
   const passwordValidation = await axios.post("/?action=password", {
     password: passwordInput.value,
   });
-
-  if (
-    logoutRequest.data.err &&
-    logoutRequest.data.err == "internet connection"
-  ) {
-    return showAlert(
-      headerText,
-      "اینترنت خود را چک کنید!",
-      "اپل سرویس",
-      "red",
-      "black"
-    );
-  }
 
   if (passwordValidation.data == "ok") {
     locker[0].style.opacity = 0;
