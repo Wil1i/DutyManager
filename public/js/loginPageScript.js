@@ -87,6 +87,19 @@ logoutButton.addEventListener("click", async () => {
       codePersoneli: codePersoneli.value,
     });
 
+    if (
+      logoutRequest.data.err &&
+      logoutRequest.data.err == "internet connection"
+    ) {
+      return showAlert(
+        headerText,
+        "اینترنت خود را چک کنید!",
+        "اپل سرویس",
+        "red",
+        "black"
+      );
+    }
+
     if (logoutRequest.data == "") {
       showAlert(headerText, "کد پرسنلی نامعتبر", "اپل سرویس", "red", "black");
       codePersoneli.value = "";
@@ -135,6 +148,19 @@ passwordSubmitButton.addEventListener("click", async () => {
   const passwordValidation = await axios.post("/?action=password", {
     password: passwordInput.value,
   });
+
+  if (
+    logoutRequest.data.err &&
+    logoutRequest.data.err == "internet connection"
+  ) {
+    return showAlert(
+      headerText,
+      "اینترنت خود را چک کنید!",
+      "اپل سرویس",
+      "red",
+      "black"
+    );
+  }
 
   if (passwordValidation.data == "ok") {
     locker[0].style.opacity = 0;

@@ -28,9 +28,11 @@ const post = async (req, res) => {
       });
       if (!isUserDuty) {
         // const pTime = await axios.get("http://api.keybit.ir/time/")
-        const pTime = await axios.get(
-          "https://prayer.aviny.com/api/prayertimes/1"
-        );
+        const pTime = await axios
+          .get("https://prayer.aviny.com/api/prayertimes/1")
+          .catch(() => {
+            return res.json({ err: "internet connection" });
+          });
         // const pDate = pTime.data.date.full.official.usual.en.split("/")
         // const pDate2 = pTime.data.time24.full.en.split(":")
 
@@ -74,9 +76,11 @@ const post = async (req, res) => {
     });
 
     if (todayDuty) {
-      let offDutyTime = await axios.get(
-        "https://prayer.aviny.com/api/prayertimes/1"
-      );
+      let offDutyTime = await axios
+        .get("https://prayer.aviny.com/api/prayertimes/1")
+        .catch(() => {
+          return res.json({ err: "internet connection" });
+        });
 
       // const pDate = offDutyTime.data.date.full.official.usual.en.split("/")
       // const pDate2 = offDutyTime.data.time24.full.en.split(":")
