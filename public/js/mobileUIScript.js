@@ -125,7 +125,10 @@ submit.addEventListener("click", async () => {
 
             if (response && response.data && response.data.dataValues) {
               const data = response.data.dataValues;
-              customAlert(`${data.firstName} ${data.lastName} خوش آمدید‌!`);
+              customAlert(
+                `${data.firstName} ${data.lastName} خوش آمدید‌!`,
+                "success"
+              );
             } else {
               customAlert("کد پرسنلی نامعتبر است!", "warn");
             }
