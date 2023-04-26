@@ -1,0 +1,128 @@
+:root {
+  --main-color: #2f25e8;
+  --danger: #e3090f;
+}
+
+input {
+  direction: rtl;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--main-color);
+  outline: none;
+  font-weight: lighter;
+  margin: 5px;
+}
+
+#mainContainerMorakhasi {
+  background-color: white;
+  width: 500px;
+  height: 300px;
+  border-radius: 10px;
+  border: 2px solid var(--main-color);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#mainContainerMorakhasi > h1 {
+  text-align: center;
+  color: var(--main-color);
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  width: 80%;
+}
+
+#inputBoxMorakhasi {
+  width: 90%;
+  margin-top: 20px;
+  height: 90vh;
+}
+
+.column {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.size10 {
+  width: 99%;
+}
+
+.size9 {
+  width: 89%;
+}
+
+.size8 {
+  width: 79%;
+}
+
+.size7 {
+  width: 69%;
+}
+
+.size6 {
+  width: 59%;
+}
+
+.size5 {
+  width: 49%;
+}
+
+.size4 {
+  width: 39%;
+}
+
+.size3 {
+  width: 29%;
+}
+
+.size2 {
+  width: 19%;
+}
+
+.size1 {
+  width: 9%;
+}
+
+.c {
+  text-align: center;
+}
+
+.inputBoxHandler {
+  height: 20%;
+}
+
+button {
+  padding: 7px 0;
+  border: 1px solid var(--main-color);
+  border-radius: 10px;
+  width: 100%;
+  color: white;
+  background-color: var(--main-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+#containerHandlerMorakhasi {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.morakhasi-handler {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
