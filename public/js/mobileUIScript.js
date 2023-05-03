@@ -102,41 +102,37 @@ submit.addEventListener("click", async () => {
   clickAnimation(submit);
 
   // submit personel
-  axios
-    .post("/api/duty/change", { codePersoneli: input.value })
-    .then((isUserDuty) => {
-      if (isUserDuty.data == true) {
-        axios
-          .post("/?action=logout", { codePersoneli: input.value })
-          .then((response) => {
-            customAlert("با موفقیت خارج شدید!", "danger");
-          });
-      } else {
-        axios
-          .post("/?action=login", { codePersoneli: input.value })
-          .then((response) => {
-            if (
-              response.data.err &&
-              response.data.err == "internet connection"
-            ) {
-              customAlert("اینترنت خود را چک کنید", "warn");
-              return;
-            }
-
-            if (response && response.data && response.data.dataValues) {
-              const data = response.data.dataValues;
-              customAlert(
-                `${data.firstName} ${data.lastName} خوش آمدید‌!`,
-                "success"
-              );
-            } else {
-              customAlert("کد پرسنلی نامعتبر است!", "warn");
-            }
-          });
-      }
-
-      input.value = "";
+  const isUserDuty = await axios.post("/api/duty/change", {
+    codePersoneli: input.value,
+  });
+  if (isUserDuty.data == true) {
+    await axios.post("/?action=logout", {
+      codePersoneli: input.value,
     });
+
+    customAlert("با موفقیت خارج شدید!", "danger");
+  } else {
+    const loginResponse = await axios.post("/?action=login", {
+      codePersoneli: input.value,
+    });
+
+    if (
+      loginResponse.data.err &&
+      loginResponse.data.err == "internet connection"
+    ) {
+      customAlert("اینترنت خود را چک کنید", "warn");
+      return;
+    }
+
+    if (loginResponse && loginResponse.data && loginResponse.data.dataValues) {
+      const data = loginResponse.data.dataValues;
+      customAlert(`${data.firstName} ${data.lastName} خوش آمدید‌!`, "success");
+    } else {
+      customAlert("کد پرسنلی نامعتبر است!", "warn");
+    }
+  }
+
+  input.value = "";
 });
 
 appleAlert.addEventListener("click", () => {

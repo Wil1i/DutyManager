@@ -4,7 +4,7 @@ const get = async (req, res) => {
   const dutyUsers = await Duty.findAll();
   let result = [];
   dutyUsers.forEach((u) => {
-    result.push(`${dutyUsers.firstName} ${dutyUsers.lastName}`);
+    result.push(`${u.firstName} ${u.lastName}`);
   });
   return result;
 };

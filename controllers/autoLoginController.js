@@ -16,11 +16,9 @@ const post = async (req, res) => {
       { codePersoneli: req.body.id }
     );
 
-    if (loginUser && loginUser.data.isDuty == false) {
-      res.send({ ...loginUser.data, userIsAlreadyDuty: false });
-    } else {
-      res.send({ ...loginUser.data, userIsAlreadyDuty: true });
-    }
+    loginUser && loginUser.data.isDuty == false
+      ? res.send({ ...loginUser.data, userIsAlreadyDuty: false })
+      : res.send({ ...loginUser.data, userIsAlreadyDuty: true });
   } else {
     res.send(undefined);
   }

@@ -21,8 +21,6 @@ const post = async (req, res) => {
     });
 
     if (targetUser) {
-      if (!targetUser.token) await token.createToken(req.body.codePersoneli);
-
       const isUserDuty = await Duty.findOne({
         where: { codePersoneli: req.body.codePersoneli },
       });
@@ -42,16 +40,15 @@ const post = async (req, res) => {
             let pMonth = Number(pDate[1]);
             let pDay = Number(pDate[2]);
 
-            await DutyInformation.create({
+            const diResult = await DutyInformation.create({
               codePersoneli: req.body.codePersoneli,
               startTime: `${pHours} : ${pMinutes}`,
               date: `${pDate[0]}/${pMonth}/${pDay}`,
-            }).then(async (diResult) => {
-              await Duty.create({
-                codePersoneli: req.body.codePersoneli,
-                startTime: `${pHours} : ${pMinutes}`,
-                infoID: diResult.id,
-              });
+            });
+            await Duty.create({
+              codePersoneli: req.body.codePersoneli,
+              startTime: `${pHours} : ${pMinutes}`,
+              infoID: diResult.id,
             });
             const data = {
               ...targetUser,

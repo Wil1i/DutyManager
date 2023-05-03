@@ -12,12 +12,13 @@ var morakhasiContainer = document.getElementById("containerHandlerMorakhasi");
 var morakhasiCloseBtn = document.getElementById("closeMorakhasi");
 var deleteMorakhasiBtn = document.getElementById("delete-morakhasi");
 
-deleteMorakhasiBtn.addEventListener("click", () => {
-  axios
-    .post(`/admin/${codePersoneli.textContent}?action=deleteMorakhasi`)
-    .then((result) => {
-      if (result.data == true) location.reload();
-    });
+deleteMorakhasiBtn.addEventListener("click", async () => {
+  try {
+    const result = await axios.post(
+      `/admin/${codePersoneli.textContent}?action=deleteMorakhasi`
+    );
+    if (result.data == true) location.reload();
+  } catch (error) {}
 });
 
 morakhasiBtn.addEventListener("click", () => {
@@ -49,28 +50,31 @@ stopWorking.addEventListener("click", async () => {
   location.reload();
 });
 
-resetWorkHours.addEventListener("click", () => {
-  axios
-    .post(`/admin/${codePersoneli.textContent}?action=resetWorkHours`)
-    .then((result) => {
-      if (result.data == true) location.reload();
-    });
+resetWorkHours.addEventListener("click", async () => {
+  try {
+    const result = await axios.post(
+      `/admin/${codePersoneli.textContent}?action=resetWorkHours`
+    );
+    if (result.data == true) location.reload();
+  } catch (error) {}
 });
 
-deleteHistory.addEventListener("click", () => {
-  axios
-    .post(`/admin/${codePersoneli.textContent}?action=deleteHistory`)
-    .then((result) => {
-      if (result.data == true) location.reload();
-    });
+deleteHistory.addEventListener("click", async () => {
+  try {
+    const result = await axios.post(
+      `/admin/${codePersoneli.textContent}?action=deleteHistory`
+    );
+    if (result.data == true) location.reload();
+  } catch (error) {}
 });
 
-deleteUser.addEventListener("click", () => {
+deleteUser.addEventListener("click", async () => {
   if (confirm("کاربر مورد نظر حذف شود ؟")) {
-    axios
-      .post(`/admin/${codePersoneli.textContent}?action=deleteUser`)
-      .then((result) => {
-        if (result.data == true) location.href = "/admin";
-      });
+    try {
+      const result = await axios.post(
+        `/admin/${codePersoneli.textContent}?action=deleteUser`
+      );
+      if (result.data == true) location.href = "/admin";
+    } catch (error) {}
   }
 });

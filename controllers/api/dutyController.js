@@ -1,5 +1,4 @@
 const Duty = require("../../models/Duty");
-const axios = require("axios");
 
 const post = async (req, res) => {
   const isUserDuty = await Duty.findOne({

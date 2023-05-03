@@ -3,12 +3,12 @@ const User = require("../models/User");
 const createToken = async (codePersoneli) => {
   const encrypted = await User.encryptPassword(codePersoneli);
   const findUser = await User.findOne({ where: { codePersoneli } });
-  if (findUser) {
-    findUser.update({ token: encrypted }).then(() => {
-      return true;
-    });
+  try {
+    await findUser.update({ token: encrypted });
+    return true;
+  } catch (error) {
+    return false;
   }
-  return false;
 };
 
 const auth = (token, codePersoneli) => {

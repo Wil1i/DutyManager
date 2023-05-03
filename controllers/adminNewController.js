@@ -1,7 +1,5 @@
-// const sharp = require("sharp")
 const User = require("../models/User");
 const Setting = require("../models/Setting");
-const token = require("../helpers/token");
 
 const get = (req, res) => {
   res.render("adminNew", {
