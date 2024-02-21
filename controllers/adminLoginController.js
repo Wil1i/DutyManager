@@ -5,13 +5,13 @@ const get = (req, res) => {
 };
 
 const post = passport.authenticate("local", {
-  failureRedirect: "/admin/login",
+  failureRedirect: "/duty/admin/login",
   failureFlash: true,
   session: true,
 });
 
 const loginSuccess = (req, res) => {
-  res.redirect(req.session.redirectTo || "/admin");
+  res.redirect(req.session.redirectTo || "/duty/admin");
   delete req.session.redirectTo;
 };
 

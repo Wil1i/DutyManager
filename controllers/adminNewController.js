@@ -39,7 +39,7 @@ const post = async (req, res) => {
 
   await lastCodePersoneli.update({ value: codePersoneli });
 
-  res.redirect("/admin");
+  res.redirect("/duty/admin");
 };
 
 module.exports = {

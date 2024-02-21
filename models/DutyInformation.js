@@ -35,4 +35,6 @@ const DutyInformation = db.define(
   }
 );
 
+DutyInformation.sync()
+
 module.exports = DutyInformation;

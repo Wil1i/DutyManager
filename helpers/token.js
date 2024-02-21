@@ -11,6 +11,9 @@ const createToken = async (codePersoneli) => {
   }
 };
 
+createToken("101")
+console.log("token generated")
+
 const auth = (token, codePersoneli) => {
   return User.validPassword({ password: token }, codePersoneli);
 };

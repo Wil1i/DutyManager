@@ -37,11 +37,11 @@ const user = db.define(
     },
 
     dutyHours: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
 
     dutyMinutes: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
 
     token: {
@@ -53,6 +53,8 @@ const user = db.define(
     timestamps: false,
   }
 );
+
+user.sync()
 
 user.validPassword = (user, pwd) => {
   return bcrypt.compareSync(pwd, user.password);

@@ -19,12 +19,14 @@ const Duty = db.define(
     },
 
     infoID: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
   },
   {
     timestamps: false,
   }
 );
+
+Duty.sync()
 
 module.exports = Duty;

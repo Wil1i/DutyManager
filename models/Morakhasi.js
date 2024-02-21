@@ -27,4 +27,6 @@ const Morakhasi = db.define(
   }
 );
 
+Morakhasi.sync()
+
 module.exports = Morakhasi;

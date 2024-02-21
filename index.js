@@ -26,13 +26,13 @@ app.set("view engine", "ejs");
 require("./helpers/passport");
 
 const routes = require("./routes");
-app.use("/", routes);
+app.use("/duty/", routes);
 
 const APIRoutes = require("./routes/api");
-app.use("/api", APIRoutes);
+app.use("/duty/api", APIRoutes);
 
 const adminRoutes = require("./routes/admin");
-app.use("/admin", adminRoutes);
+app.use("/duty/admin", adminRoutes);
 
 dbChecker(); // Check everything in database which is set for defualt
 

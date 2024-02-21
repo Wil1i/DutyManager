@@ -103,7 +103,7 @@
 
         if (readyForRequest) {
           axios
-            .post("/api/birthday", {
+            .post("/duty/api/birthday", {
               codePersoneli: location.href
                 .split("?")[1]
                 .split("&")[0]
@@ -119,7 +119,7 @@
       logout.addEventListener("click", async () => {
         if (confirm("آیا مایل به ثبت پایان ساعت کاری هستید؟")) {
           await axios
-            .post("/?action=logout", { codePersoneli: "<%=id%>" })
+            .post("/duty/?action=logout", { codePersoneli: "<%=id%>" })
             .then(() => {
               logout.style.display = "none";
               time.style.display = "none";

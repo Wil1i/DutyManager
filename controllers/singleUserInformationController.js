@@ -108,7 +108,7 @@ const post = async (req, res) => {
     case "token":
       token.createToken(req.params.id).then(() => {
         setTimeout(() => {
-          res.redirect(`/admin/${req.params.id}`);
+          res.redirect(`/duty/admin/${req.params.id}`);
         }, 500);
       });
       break;
@@ -138,7 +138,7 @@ const post = async (req, res) => {
       });
 
       if (req.file) await targetUser.update({ profile: req.file.filename });
-      res.redirect(`/admin/${req.params.id}`);
+      res.redirect(`/duty/admin/${req.params.id}`);
       break;
 
     case "morakhasi":
@@ -147,7 +147,7 @@ const post = async (req, res) => {
         startTime: `${req.body.year}/${req.body.month}/${req.body.day}`,
         endTime: `${req.body.year2}/${req.body.month2}/${req.body.day2}`,
       }).then(() => {
-        res.redirect(`/admin/${req.params.id}`);
+        res.redirect(`/duty/admin/${req.params.id}`);
       });
 
       break;

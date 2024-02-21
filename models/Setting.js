@@ -23,4 +23,6 @@ const Setting = db.define(
   }
 );
 
+Setting.sync()
+
 module.exports = Setting;

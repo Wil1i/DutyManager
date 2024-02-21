@@ -48,7 +48,7 @@ const dbChecker = async () => {
   const userResult = await User.findAll();
   if (!userResult || !userResult[0]) {
     try {
-      const createUserAdmin = await axios.post("/admin/new", {
+      const createUserAdmin = await axios.post("/duty/admin/new", {
         year: "0",
         month: "0",
         day: "0",

@@ -12,7 +12,7 @@ const get = (req, res) => {
 const post = async (req, res) => {
   if (token.auth(req.body.token, req.body.id)) {
     const loginUser = await axios.post(
-      `http://${config.app.ip}:${config.app.port}/?action=login`,
+      `http://${config.app.ip}/duty/?action=login`,
       { codePersoneli: req.body.id }
     );
 
