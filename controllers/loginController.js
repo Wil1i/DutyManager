@@ -43,6 +43,7 @@ const post = async (req, res) => {
             const diResult = await DutyInformation.create({
               codePersoneli: req.body.codePersoneli,
               startTime: `${pHours} : ${pMinutes}`,
+	      startDate : new Date().toString(),
               date: `${pDate[0]}/${pMonth}/${pDay}`,
             });
             await Duty.create({
@@ -86,15 +87,29 @@ const post = async (req, res) => {
           let onDutyTime = todayDuty.startTime.split(" : ");
           onDutyTime = onDutyTime.map((d) => Number(d));
 
-          let dutyHours = offDutyTime[0] - onDutyTime[0];
-          let dutyMinutes;
-          if (offDutyTime[1] > onDutyTime[1]) {
+	 const dutyInformationToday = await DutyInformation.findByPk(
+            todayDuty.infoID
+          );
+
+          let nowDate = new Date();
+	  let onDutyDate = new Date(dutyInformationToday.startDate);
+	  let dateDifferent = nowDate.getTime() - onDutyDate.getTime();
+
+          let dutyHours = 0;
+	  let dutyMinutes = Math.round(dateDifferent / (1000 * 60));
+	
+	  if (dutyMinutes >= 60){
+		dutyHours += Math.floor(dutyMinutes/60);
+		dutyMinutes -= dutyHours*60;
+	  }
+
+          /* if (offDutyTime[1] >= onDutyTime[1]) {
             dutyMinutes = offDutyTime[1] - onDutyTime[1];
           } else {
-            dutyHours--;
+            dutyHours =  (dutyHours - 1 >= 0) ? dutyHours-=1 : 0;
             offDutyTime[1] += 60;
             dutyMinutes = offDutyTime[1] - onDutyTime[1];
-          }
+          } */
 
           const workerInformation = await User.findOne({
             where: {
@@ -112,10 +127,6 @@ const post = async (req, res) => {
 
           await workerInformation.update({ dutyHours: updatedHours });
           await workerInformation.update({ dutyMinutes: updatedMinutes });
-
-          const dutyInformationToday = await DutyInformation.findByPk(
-            todayDuty.infoID
-          );
 
           offDutyTime[0] < 10
             ? (offDutyTime[0] = "0" + offDutyTime[0])

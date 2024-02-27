@@ -29,6 +29,10 @@ const DutyInformation = db.define(
     time: {
       type: DataTypes.TEXT,
     },
+
+	startDate : {
+		type : DataTypes.TEXT
+	},
   },
   {
     timestamps: false,
